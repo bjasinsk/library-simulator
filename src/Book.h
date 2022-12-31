@@ -6,23 +6,25 @@
 
 class Book
 {
-    protected:
+    private:
         Author author;
         std::string isbn;
-        unsigned publication_year;
-        double base_price;
+        unsigned int publication_year;
+        double price;
+        std::string title;
 
     public:
-        Book(Author new_author, std::string new_tittle, std::string new_isbn, double new_price);
-        void print() const;
-        virtual double calculate_price() const;
-        virtual ~Book();
-
+        Book(Author new_author, std::string new_title, std::string new_isbn, double new_price, unsigned int publication_year);
         Author get_author() const;
         std::string get_title() const;
         std::string get_isbn() const;
-        unsigned get_publication_year() const;
-        double get_publication_year() const;
+        double get_price() const;
+        void set_price(double price);
+        unsigned int get_publication_year() const;
+        get_publication_year() const;
+        friend std::ostream& operator <<(std::ostream& os, const Book& book);
 };
+
+std::ostream& operator<<(std::ostream& os, const Book& book);
 
 #endif
