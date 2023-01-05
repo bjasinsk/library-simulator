@@ -79,7 +79,7 @@ void Book::addBooks(unsigned int number)
 
 unsigned int Book::removeBooks(unsigned int number)
 {
-    if(this->number >= number)
+    if (this->number >= number)
     {
         this->number -= number;
         return number;
@@ -91,13 +91,24 @@ unsigned int Book::removeBooks(unsigned int number)
     }
 }
 
-bool Book::operator==(const Book& b) const
+bool Book::operator==(const Book &b) const
 {
-    return this->author==b.author && this->title==b.title;
+    return this->author == b.author && this->title == b.title;
 }
 
 std::ostream &operator<<(std::ostream &os, const Book &b)
 {
     os << b.author << " \"" << b.title << "\" " << b.publication_year << " " << b.isbn << " " << b.price << "zl" << std::endl;
     return os;
+}
+
+std::string Book::BookType_to_string(BookType b)
+{
+    std::unordered_map<BookType, std::string> m{
+        {ADVENTURE, "Adventure"},
+        {COOKERY, "Cookery"},
+        {CRIME, "Crime"},
+        {HISTORY, "History"},
+        {SCIFI, "Sci-fi"}};
+    return m[b];
 }

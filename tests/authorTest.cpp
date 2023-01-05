@@ -13,7 +13,7 @@ SCENARIO("Test")
         Author author2("Julian", "Tuwim");
         Author author3(author);
 
-        SECTION("Copy constructor")
+        SECTION("Copy constructor and comparison")
         {
             THEN("Correct values")
             {

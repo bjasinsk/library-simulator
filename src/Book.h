@@ -7,15 +7,7 @@
 
 class Book
 {
-private:
-    Author author;
-    std::string isbn;
-    unsigned int publication_year;
-    double price;
-    std::string title;
-    unsigned int number;
-
-protected:
+public:
     enum BookType
     {
         ADVENTURE,
@@ -25,18 +17,17 @@ protected:
         SCIFI
     };
 
-    static const std::string BookType_to_string(BookType b)
-    {
-        std::unordered_map<BookType, std::string> m
-        {
-            {ADVENTURE, "Adventure"},
-            {COOKERY, "Cookery"},
-            {CRIME, "Crime"},
-            {HISTORY, "History"},
-            {SCIFI, "Sci-fi"}
-        };
-        return m[b];
-    }
+protected:
+    static std::string BookType_to_string(BookType b);
+    
+private:
+    Author author;
+    std::string isbn;
+    unsigned int publication_year;
+    double price;
+    std::string title;
+    unsigned int number;
+    BookType type;
 
 public:
     Book(Author new_author, std::string new_title, double new_price, unsigned int publication_year);
