@@ -11,15 +11,13 @@ class Bookshelf
 {
     private:
         std::vector<std::shared_ptr<Book>> books;
-        Bookshelf(){};
-        static Bookshelf* instance;
         void sortBooks();
+        std::shared_ptr<Book> findBookIfExist(const Book& book) const;
     public:
-        static Bookshelf& getInstance();
+        Bookshelf(){};
         void addBooks(const Book& book, unsigned int number);
         void removeBooks(const Book& book, unsigned int number);
-        bool checkBookExist(const Book& book);
-        unsigned int checkBooksNumber(const Book& book);
+        unsigned int checkBooksNumber(const Book& book) const;
         friend std::ostream& operator<<(std::ostream& os, const Bookshelf& b);
 };
 

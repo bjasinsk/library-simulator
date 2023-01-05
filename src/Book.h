@@ -15,7 +15,7 @@ class Book
         unsigned int number;
 
     public:
-        Book(Author new_author, std::string new_title, std::string new_isbn, double new_price, unsigned int publication_year);
+        Book(Author new_author, std::string new_title, double new_price, unsigned int publication_year);
         Author get_author() const;
         std::string get_title() const;
         std::string get_isbn() const;
@@ -27,6 +27,7 @@ class Book
         friend std::ostream& operator <<(std::ostream& os, const Book& book);
         void addBooks(unsigned int number);
         unsigned int removeBooks(unsigned int number);
+        bool operator==(const Book& b) const;
 };
 
 std::ostream& operator<<(std::ostream& os, const Book& book);
