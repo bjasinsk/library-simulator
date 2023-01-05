@@ -11,7 +11,7 @@ Book::Book(Author new_author, std::string new_title, double new_price, unsigned 
     int num1, num2, num3, num4, num5;
     if (new_price <= 0.0)
         throw ExceptionLibraryWrongValue("Price must be positive\n");
-    std::mt19937 rng;
+    std::random_device rng;
     std::uniform_int_distribution<int> dist(0, 999);
     num1 = dist(rng);
     dist.param(std::uniform_int_distribution<>::param_type(0, 9));
