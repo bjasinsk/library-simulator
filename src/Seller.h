@@ -7,8 +7,9 @@
 class Seller : public Human
 {
     private:
+    
     public:
-        Seller(std::string name) : Human(name) {};
+        Seller(std::string name, std::string surname) : Human(name, surname) {};
 };
 
 #endif
