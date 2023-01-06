@@ -14,6 +14,7 @@
 
 #include "Human.h"
 #include "Customer.h"
+#include "Seller.h"
 
 int main()
 {   
@@ -37,9 +38,13 @@ int main()
     tomek.printActualShoppingCart();
     tomek.calculateBill();
     std::cout << tomek.getActualBill();
-    tomek.removeFromShoppingCart(b1);
-    std:: cout << "\n";
-    tomek.calculateBill();
-    std::cout << tomek.getActualBill();
+
+    std::cout << "\n";
+    Seller sprzedawca1 = Seller("Adam", "Kowalczyk");
+    sprzedawca1.addCustomerToQueue(tomek);
+    std::cout << sprzedawca1.BillForFirstCustomerInQueue();
+
+
+
     return 0;
 }
