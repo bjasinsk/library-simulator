@@ -19,6 +19,7 @@ class Bookshelf
         void removeBooks(const Book& book, unsigned int number);
         unsigned int checkBooksNumber(const Book& book) const;
         friend std::ostream& operator<<(std::ostream& os, const Bookshelf& b);
+        std::vector<std::shared_ptr<Book>> getBooks();
 };
 
 std::ostream& operator<<(std::ostream& os, const Bookshelf& b);

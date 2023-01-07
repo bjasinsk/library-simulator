@@ -69,3 +69,9 @@ unsigned int Bookshelf::checkBooksNumber(const Book &book) const
     else
         return 0;
 }
+
+
+
+std::vector<std::shared_ptr<Book>> Bookshelf::getBooks(){
+    return books;
+};

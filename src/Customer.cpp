@@ -2,8 +2,10 @@
 #include <iostream>
 #include <map>
 #include "Book.h"
+#include "Seller.h"
+#include <algorithm>
 
-std::map<std::string, double> Customer::getShoppingCart() const{
+std::vector<std::shared_ptr<Book>> Customer::getShoppingCart() const{
     return shoppingCart;
 };
 
@@ -11,20 +13,26 @@ std::map<std::string, double> Customer::getShoppingCart() const{
 void Customer::printActualShoppingCart(){
     std::cout << "Aktualny koszyk Klienta: \n";
 
-    for(std::map<std::string, double>::iterator itr = shoppingCart.begin(); itr != shoppingCart.end(); itr++){
-        std::cout << "Książka: " << itr->first << " cena: " << itr->second << "\n";
+    for (auto i: shoppingCart){
+        std::cout <<"Tytuł: " <<  i->get_title() << "\n";
     }
 };
 
 
-void Customer::addToShoppingCart(Book& b){
-    shoppingCart.insert(std::make_pair(b.get_title(), b.get_price()));
+void Customer::addToShoppingCart(Book &book){
+    std::shared_ptr<Book> new_book (new Book(book));
+    shoppingCart.push_back(new_book);
 };
 
 
-void Customer::removeFromShoppingCart(Book& b){
-    shoppingCart.erase(b.get_title());
-}
+void Customer::removeFromShoppingCart(Book &book){
+    for(std::vector<std::shared_ptr<Book>>::iterator it = shoppingCart.begin(); it != shoppingCart.end(); ++it)
+        {
+            if(**it == book)
+                shoppingCart.erase(it);
+                break;
+        }
+};
 
 
 double Customer::getActualBill() const {
@@ -34,8 +42,8 @@ double Customer::getActualBill() const {
 
 void Customer::calculateBill(){
     bill = 0;
-     for(std::map<std::string, double>::iterator itr = shoppingCart.begin(); itr != shoppingCart.end(); itr++){
-        bill += itr->second;
-     }
+    for(std::shared_ptr<Book> b: shoppingCart){
+        bill += b->get_price();
+    }
 };
 
