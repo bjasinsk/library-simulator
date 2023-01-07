@@ -1,8 +1,15 @@
 #include "BookStore.h"
 
 void BookStore::addSeller(Seller &seller){
-    std::shared_ptr<Seller> new_seller (new Seller(seller));
-    sellers.push_back(new_seller);
+    if(counterOfSellers == maxNumberOfSellers){
+        std::cout << "Jest już maksymalna liczba sprzedawców na zmianie\n";
+        return;
+    }else{
+        std::shared_ptr<Seller> new_seller (new Seller(seller));
+        sellers.push_back(new_seller);
+        counterOfSellers++;
+    }
+    
 };
 
 

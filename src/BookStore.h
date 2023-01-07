@@ -19,10 +19,12 @@ class BookStore
         std::vector<std::shared_ptr<Customer>> customers;
         std::vector<std::shared_ptr<Seller>> sellers;
 
-        int numberOfSellers;
+        int maxNumberOfSellers;
+        int counterOfSellers;
 
     public:
-        BookStore(){};
+        BookStore(): maxNumberOfSellers(3), counterOfSellers(0){};
+        BookStore(int numberOfSellers_): maxNumberOfSellers(numberOfSellers_), counterOfSellers(0){};
 
         //pracownicy
         void addSeller(Seller &seller);
