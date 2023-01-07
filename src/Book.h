@@ -14,12 +14,10 @@ public:
         COOKERY,
         CRIME,
         HISTORY,
-        SCIFI
+        SCIFI, 
+        POETRY
     };
-
-protected:
-    static std::string BookType_to_string(BookType b);
-    
+ 
 private:
     Author author;
     std::string isbn;
@@ -28,9 +26,10 @@ private:
     std::string title;
     unsigned int number;
     BookType type;
+    std::string BookType_to_string(BookType b) const;
 
 public:
-    Book(Author new_author, std::string new_title, double new_price, unsigned int publication_year);
+    Book(Author new_author, std::string new_title, double new_price, unsigned int publication_year, BookType type);
     Author get_author() const;
     std::string get_title() const;
     std::string get_isbn() const;
@@ -38,7 +37,7 @@ public:
     unsigned int get_publication_year() const;
     unsigned int getNumberOfBooks() const;
     void set_price(double price);
-    virtual std::string getCategory() const;
+    std::string getCategory() const;
     friend std::ostream &operator<<(std::ostream &os, const Book &book);
     void addBooks(unsigned int number);
     unsigned int removeBooks(unsigned int number);

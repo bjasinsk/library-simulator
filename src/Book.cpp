@@ -5,8 +5,8 @@
 #include <sstream>
 #include <iomanip>
 
-Book::Book(Author new_author, std::string new_title, double new_price, unsigned int publication)
-    : author(new_author), title(new_title), price(new_price), publication_year(publication)
+Book::Book(Author new_author, std::string new_title, double new_price, unsigned int publication, BookType t)
+    : author(new_author), title(new_title), price(new_price), publication_year(publication), type(t)
 {
     int num1, num2, num3, num4, num5;
     if (new_price <= 0.0)
@@ -32,7 +32,7 @@ Book::Book(Author new_author, std::string new_title, double new_price, unsigned 
 
 std::string Book::getCategory() const
 {
-    return "Unknown";
+    return BookType_to_string(type);
 }
 
 Author Book::get_author() const
@@ -102,13 +102,16 @@ std::ostream &operator<<(std::ostream &os, const Book &b)
     return os;
 }
 
-std::string Book::BookType_to_string(BookType b)
+std::string Book::BookType_to_string(BookType b) const
 {
-    std::unordered_map<BookType, std::string> m{
+    std::unordered_map<BookType, std::string> m
+    {
         {ADVENTURE, "Adventure"},
         {COOKERY, "Cookery"},
         {CRIME, "Crime"},
         {HISTORY, "History"},
-        {SCIFI, "Sci-fi"}};
+        {SCIFI, "Sci-fi"},
+        {POETRY, "Poetry"}
+    };
     return m[b];
 }
