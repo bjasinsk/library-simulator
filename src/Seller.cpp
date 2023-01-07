@@ -1,7 +1,8 @@
 #include "Seller.h"
 
-void Seller::addCustomerToQueue(Customer client){
-    q.push(client);
+void Seller::addCustomerToQueue(Customer &client){
+    std::shared_ptr<Customer> new_customer (new Customer(client));
+    q.push(new_customer);
 };
 
 void Seller::removeCustomerFromQueue(){
@@ -9,11 +10,11 @@ void Seller::removeCustomerFromQueue(){
 };
 
 double Seller::BillForFirstCustomerInQueue(){
-    Customer clientToServe = q.front();
-    clientToServe.calculateBill();
+    auto clientToServe = q.front();
+    clientToServe->calculateBill();
     removeCustomerFromQueue();
 
-    return clientToServe.getActualBill();
+    return clientToServe->getActualBill();
 };
 
 
@@ -53,3 +54,9 @@ void Seller::showBooksByCategory (std::string category){
     }
     std::cout << "\n";
 };
+
+
+bool Seller::operator==(const Seller &seller) const
+{
+    return this->getName() == seller.getName() && this->getSurname() == seller.getSurname();
+}

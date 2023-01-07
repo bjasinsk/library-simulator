@@ -10,14 +10,19 @@
 #include <vector>
 #include <list>
 #include <utility>
+#include <ctime>
 
+#include <chrono>
+#include <thread>
 
 #include "Human.h"
 #include "Customer.h"
 #include "Seller.h"
+#include "BookStore.h"
 
 int main()
 {   
+    BookStore sklep1;
     Bookshelf bookshelf;
 
     Author author_karol_may = Author("Karol", "Maj");
@@ -47,5 +52,17 @@ int main()
     sprzedawca1.checkAvailabilityByTitle("Winnetou");
     std::cout << "\n";
     sprzedawca1.showBooksByCategory("History");
+
+
+    
+    
+    sklep1.customerEntersStore(tomek);
+    std:: cout << "\n";
+    // czas pobytu 20 sekund
+    std::this_thread::sleep_for(std::chrono::milliseconds(20000));    
+    sklep1.customerLeavesStore(tomek);
+    
+
+    
     return 0;
 }

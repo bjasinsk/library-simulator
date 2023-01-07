@@ -11,6 +11,9 @@ class Time
         int minute;
         int second;
     public:
+        
+        Time():hour(0), minute(0), second(0){};
+
         Time(int hour, int minte, int seconds);
         //default copy and assignment constructors
         bool operator==(const Time& other) const;

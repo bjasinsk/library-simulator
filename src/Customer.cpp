@@ -47,3 +47,25 @@ void Customer::calculateBill(){
     }
 };
 
+Time Customer::getTimeOfEntrance() const{
+    return timeOfEntrance;
+};
+
+
+void Customer::setTimeOfEntrance(Time t){
+    this->timeOfEntrance = t;
+};
+
+
+Time Customer::getTimeOfLeave() const{
+    return timeOfLeave;
+};
+
+void Customer::setTimeOfLeave(Time t){
+    this->timeOfLeave = t;
+};
+
+bool Customer::operator==(const Customer &customer) const
+{
+    return this->getName() == customer.getName() && this->getSurname() == customer.getSurname();
+}
