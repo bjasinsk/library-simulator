@@ -11,10 +11,13 @@ class Time
         int minute;
         int second;
     public:
-        
+
         Time():hour(0), minute(0), second(0){};
 
         Time(int hour, int minte, int seconds);
+
+        Time TimeBetweenOtherTime(const Time& other);
+
         //default copy and assignment constructors
         bool operator==(const Time& other) const;
         bool operator!=(const Time& other) const;

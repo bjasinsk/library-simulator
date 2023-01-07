@@ -20,6 +20,7 @@ void BookStore::removeSeller(Seller &seller){
                 sellers.erase(it);
                 break;
         }
+    counterOfSellers -= 1;
 };
 
 
@@ -46,9 +47,8 @@ void BookStore::customerLeavesStore(Customer &customer){
 
     customer.setTimeOfLeave(Time(actual_time->tm_hour,actual_time->tm_min, actual_time->tm_sec));
 
-    // int secInShop = actual_time->tm_sec - customer.getTime().getSeconds();
-    // int minInShop = actual_time->tm_min - customer.getTime().getMinute();
-    // int hourInShop = actual_time->tm_hour - customer.getTime().getHour();
+    Time timeInStore = customer.getTimeOfLeave().TimeBetweenOtherTime(customer.getTimeOfEntrance());
+
 
     for(std::vector<std::shared_ptr<Customer>>::iterator it = customers.begin(); it != customers.end(); ++it)
         {
@@ -59,5 +59,7 @@ void BookStore::customerLeavesStore(Customer &customer){
 
     std:: cout << "Klient wyszedł ze skepu\n";
     std:: cout << "Czas wyjścia: " << customer.getTimeOfLeave().getHour() << ":" << customer.getTimeOfLeave().getMinute() << ":" << customer.getTimeOfLeave().getSeconds() <<"\n";
-    // std:: cout << "Klient przebywał w sklepie: " << hourInShop << "h" << minInShop << "min" << secInShop << "sec\n";
+
+    std:: cout << "Klient przebywał w sklepie: " << timeInStore.getHour() << "h" << timeInStore.getMinute() << "min" << timeInStore.getSeconds() << "sec\n";
+
 };
