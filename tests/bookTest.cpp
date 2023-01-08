@@ -10,7 +10,9 @@ SCENARIO("Book class test")
     GIVEN("Example date")
     {
         Author author("Adam", "Mickiewicz");
-        Book book(author, "Pan Tadeusz", 40.0, 2013, )
+        Author author2("Juliusz", "Slowacki");
+        Author author3(author);
+        Book book(author, "Pan Tadeusz", 40.0, 2013, Book::BookType::POETRY);
 
         SECTION("Copy constructor and comparison")
         {

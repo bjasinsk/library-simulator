@@ -32,7 +32,7 @@ int main()
     std::cout << bookshelf;
 
     Customer tomek = Customer("Tomek", "Kowalski", 30);
-    BookAdventure b1 = BookAdventure(author_karol_may, "Skarb w srebrnym jeziorze", 29.99, 2014);
+    Book b1 = Book(author_karol_may, "Skarb w srebrnym jeziorze", 29.99, 2014, Book::BookType::ADVENTURE);
     tomek.addToShoppingCart(b1);
     tomek.printActualShoppingCart();
 

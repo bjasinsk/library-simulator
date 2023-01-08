@@ -6,7 +6,7 @@
 #include "Human.h"
 #include "Customer.h"
 #include "Bookshelf.h"
-#include "BookHistory.h"
+#include "Book.h"
 #include "Orders.h"
 
 class Seller : public Human
