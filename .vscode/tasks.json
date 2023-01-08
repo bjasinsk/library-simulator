@@ -18,6 +18,7 @@
                 "Seller.cpp",
                 "Time.cpp",
                 "BookStore.cpp",
+                "Orders.cpp",
                 "-o",
                 "${workspaceFolder}\\main.exe"
             ],

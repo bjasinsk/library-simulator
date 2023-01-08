@@ -7,6 +7,7 @@
 #include "Customer.h"
 #include "Bookshelf.h"
 #include "BookHistory.h"
+#include "Orders.h"
 
 class Seller : public Human
 {
@@ -28,10 +29,10 @@ class Seller : public Human
         void showBooksByAuthor (std::string name, std::string surname);
         void showBooksByCategory (std::string category);
 
-        
         //porównania
         bool operator==(const Seller &seller) const;
 
+        
 };
 
 #endif

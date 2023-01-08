@@ -130,8 +130,8 @@ std::ostream& operator<<(std::ostream& os, const Time& time)
 
 Time Time::TimeBetweenOtherTime(const Time& other){
     int timeBeetwenInSeconds;
-    int otherTimeInSeconds = other.getHour() * 3600 + other.getMinute() * 60 + other.getSeconds();
-    int thisTimeInSeconds = this->getHour() * 3600 + this->getMinute() * 60 + this->getSeconds();
+    int otherTimeInSeconds = other.getSeconds() + other.getMinute() * 60 + other.getHour() * 3600;
+    int thisTimeInSeconds = this->getSeconds() + this->getMinute() * 60 + this->getHour() * 3600;
     
 
     if(*this >= other){
@@ -140,8 +140,9 @@ Time Time::TimeBetweenOtherTime(const Time& other){
         timeBeetwenInSeconds = otherTimeInSeconds - thisTimeInSeconds;
     }
     
-    int h = timeBeetwenInSeconds/3600;
-    int m = (timeBeetwenInSeconds - h*3600) /60;
-    int s = timeBeetwenInSeconds - h*3600 -m*60;
-    return Time(h,m,s);
+    int hoursBeetwen = timeBeetwenInSeconds/3600;
+    int minutesBeetwen = (timeBeetwenInSeconds - hoursBeetwen*3600) /60;
+    int secondsBeetwen = timeBeetwenInSeconds - hoursBeetwen*3600 -minutesBeetwen*60;
+    
+    return Time(hoursBeetwen, minutesBeetwen, secondsBeetwen);
 };
