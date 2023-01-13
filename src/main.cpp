@@ -15,13 +15,15 @@
 #include "Seller.h"
 #include "BookStore.h"
 #include "JsonFile.h"
+#include "Menu.h"
 
 int main()
 {   
-
-    BookStore sklep1;
     Bookshelf bookshelf;
     JsonFile::getInstance().readData("C:\\Users\\danie\\Desktop\\PROI\\projekt\\src\\data.json", bookshelf);
+    BookStore sklep1(bookshelf);
+    Menu menu(sklep1);
+    menu.mainMenu();
 
     Author author_karol_may = Author("Karol", "Maj");
     Author author_bernard_cornwell = Author("Bernard", "Cornwell");
@@ -44,13 +46,10 @@ int main()
     std::cout << "\n";
     sprzedawca1.showBooksByCategory("History");
 
-
-    
-    
     sklep1.customerEntersStore(tomek);
     std:: cout << "\n";
     // czas pobytu 20 sekund
-    std::this_thread::sleep_for(std::chrono::milliseconds(20000));    
+    // std::this_thread::sleep_for(std::chrono::milliseconds(20000));    
     sklep1.customerLeavesStore(tomek);
     
 

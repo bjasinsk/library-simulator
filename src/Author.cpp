@@ -28,6 +28,6 @@ std::string Author::get_surname() const
 
 std::ostream& operator<<(std::ostream& os, const Author& author)
 {
-    os << author.name << author.surname;
+    os << author.name << " " << author.surname;
     return os;
 }

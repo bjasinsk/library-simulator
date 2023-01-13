@@ -59,7 +59,10 @@ void BookStore::customerLeavesStore(Customer &customer){
 
     std:: cout << "Klient wyszedł ze skepu\n";
     std:: cout << "Czas wyjścia: " << customer.getTimeOfLeave().getHour() << ":" << customer.getTimeOfLeave().getMinute() << ":" << customer.getTimeOfLeave().getSeconds() <<"\n";
-
     std:: cout << "Klient przebywał w sklepie: " << timeInStore.getHour() << "h" << timeInStore.getMinute() << "min" << timeInStore.getSeconds() << "sec\n";
-
 };
+
+Bookshelf& BookStore::getBooshelfInstance()
+{
+    return bookshelf;
+}
