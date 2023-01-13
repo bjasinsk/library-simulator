@@ -1,0 +1,68 @@
+{
+    "Authors": 
+    [
+        {
+            "name": "Bernard",
+            "surname": "Cornwell",
+            "Books": 
+            [
+                {
+                    "title": "The last kingdom",
+                    "price": 29.99,
+                    "year": 2014,
+                    "type": "History",
+                    "number": 10
+                },
+                {
+                    "title": "Song of sword",
+                    "price": 29.99,
+                    "year": 2015,
+                    "type": "History",
+                    "number": 10
+                }
+            ]
+        },
+        {
+            "name": "Carl",
+            "surname": "May",
+            "Books": 
+            [
+                {
+                    "title": "Skarb w srebrnym jeziorze",
+                    "price": 39,
+                    "year": 2014,
+                    "type": "Adventure",
+                    "number": 10
+                },
+                {
+                    "title": "Winnetou",
+                    "price": 20,
+                    "year": 2010,
+                    "type": "Adventure",
+                    "number": 10
+                }
+            ]
+        },
+        {
+            "name": "Magda",
+            "surname": "Gessler",
+            "Books": 
+            [
+                {
+                    "title": "Jak nie spalic obiadu",
+                    "price": 399,
+                    "year": 2008,
+                    "type": "Cookery",
+                    "number": 10
+                },
+                {
+                    "title": "Gotowanie wody",
+                    "price": 200,
+                    "year": 2010,
+                    "type": "Cookery",
+                    "number": 10
+                }
+            ]
+        }
+    ]
+}

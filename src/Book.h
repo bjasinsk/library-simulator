@@ -42,6 +42,7 @@ public:
     void addBooks(unsigned int number);
     unsigned int removeBooks(unsigned int number);
     bool operator==(const Book &b) const;
+    static Book::BookType string_to_BookType(std::string category);
 };
 
 std::ostream &operator<<(std::ostream &os, const Book &book);
