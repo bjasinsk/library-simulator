@@ -7,9 +7,10 @@ void Bookshelf::sortBooks()
 
 std::ostream &operator<<(std::ostream &os, const Bookshelf &b)
 {
+    int i = 1;
     for (std::shared_ptr<Book> book : b.books)
     {
-        os << *book;
+        os << i++ << ". " << *book;
     }
     return os;
 }

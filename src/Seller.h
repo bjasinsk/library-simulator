@@ -31,8 +31,6 @@ class Seller : public Human
 
         //porównania
         bool operator==(const Seller &seller) const;
-
-        
 };
 
 #endif

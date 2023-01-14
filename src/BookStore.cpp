@@ -1,4 +1,5 @@
 #include "BookStore.h"
+#include "ExceptionsLibrary.h"
 
 void BookStore::addSeller(Seller &seller)
 {
@@ -69,4 +70,21 @@ void BookStore::customerLeavesStore(Customer &customer)
 Bookshelf &BookStore::getBooshelfInstance()
 {
     return bookshelf;
+}
+
+int BookStore::printSellers()
+{
+    int i = 1;
+    for(auto seller : sellers)
+    {
+        std::cout << i++ << ". " << *seller;
+    }
+    return --i;
+}
+
+std::shared_ptr<Seller> BookStore::getSellerByNum(int num)
+{
+    if((int)sellers.size() < num)
+        throw ExceptionLibraryNoValue("Brak sprzedawcy o takim numerze");
+    return sellers.at(num-1);
 }

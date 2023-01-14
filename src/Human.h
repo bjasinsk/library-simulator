@@ -14,9 +14,8 @@ class Human
         //gettery
         std::string getName() const;
         std::string getSurname() const;
-
-        
-
+        friend std::ostream &operator<<(std::ostream &os, const Human &human);
 };
+std::ostream &operator<<(std::ostream &os, const Human &human);
 
 #endif

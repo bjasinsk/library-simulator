@@ -8,3 +8,9 @@ std::string Human::getName() const{
 std::string Human::getSurname() const{
     return surname;
 };
+
+std::ostream &operator<<(std::ostream &os, const Human &human)
+{
+    os << human.getName() << " " << human.getSurname() << std::endl;
+    return os;
+}

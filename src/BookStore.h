@@ -30,8 +30,8 @@ class BookStore
         void customerEntersStore(Customer &customer);
         void customerLeavesStore(Customer &customer);
         Bookshelf& getBooshelfInstance();
-
-        
+        int printSellers();
+        std::shared_ptr<Seller> getSellerByNum(int num);
 };
 
 
