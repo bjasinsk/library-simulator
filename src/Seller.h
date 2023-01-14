@@ -16,7 +16,7 @@ class Seller : public Human
         std::queue<std::shared_ptr<Customer>> q;
         Bookshelf books;
     public:
-        Seller(std::string name, std::string surname, int age, Bookshelf& books) : Human(name, surname, age), books(books) {};
+        Seller(std::string name, std::string surname, Bookshelf& books) : Human(name, surname), books(books) {};
 
         //obsługa klienta, wyliczanie rachunku 
         void addCustomerToQueue(Customer &client);

@@ -20,8 +20,8 @@
 int main()
 {   
     Bookshelf bookshelf;
-    JsonFile::getInstance().readData("C:\\Users\\danie\\Desktop\\PROI\\projekt\\src\\data.json", bookshelf);
     BookStore sklep1(bookshelf);
+    JsonFile::getInstance().readData("C:\\Users\\danie\\Desktop\\PROI\\projekt\\src\\data.json", sklep1);
     Menu menu(sklep1);
     menu.mainMenu();
 
@@ -29,13 +29,13 @@ int main()
     Author author_bernard_cornwell = Author("Bernard", "Cornwell");
     std::cout << bookshelf;
 
-    Customer tomek = Customer("Tomek", "Kowalski", 30);
+    Customer tomek = Customer("Tomek", "Kowalski");
     Book b1 = Book(author_karol_may, "Skarb w srebrnym jeziorze", 29.99, 2014, Book::BookType::ADVENTURE);
     tomek.addToShoppingCart(b1);
     tomek.printActualShoppingCart();
 
     std::cout << "\n";
-    Seller sprzedawca1 = Seller("Adam", "Kowalczyk", 30, bookshelf);
+    Seller sprzedawca1 = Seller("Adam", "Kowalczyk", bookshelf);
     sprzedawca1.addCustomerToQueue(tomek);
     std::cout << sprzedawca1.BillForFirstCustomerInQueue();
 

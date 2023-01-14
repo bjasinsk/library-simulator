@@ -8,7 +8,3 @@ std::string Human::getName() const{
 std::string Human::getSurname() const{
     return surname;
 };
-
-int Human::getAge() const{
-    return age;
-};

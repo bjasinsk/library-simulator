@@ -21,7 +21,7 @@ class Customer : public Human
         Time timeOfEntrance;
         Time timeOfLeave;
     public:
-        Customer(std::string name, std::string surname, int age) : Human(name, surname, age) {
+        Customer(std::string name, std::string surname) : Human(name, surname) {
         };
 
         //koszyk
