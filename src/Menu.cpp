@@ -114,7 +114,7 @@ Book::BookType Menu::chooseBookCategory()
     int choice;
     while (true)
     {
-        for (int i = 0; i < Book::type_map.size(); i++)
+        for (int i = 0; i < (int)Book::type_map.size(); i++)
         {
             auto it = Book::type_map.begin();
             std::advance(it, i);
@@ -122,7 +122,7 @@ Book::BookType Menu::chooseBookCategory()
             std::cout << i + 1 << ". " << value << std::endl;
         }
         cin >> choice;
-        if (cin.fail() || choice <= 0 || choice > Book::type_map.size())
+        if (cin.fail() || choice <= 0 || choice > (int)Book::type_map.size())
         {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');

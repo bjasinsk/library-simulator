@@ -20,12 +20,12 @@ public:
  
 private:
     Author author;
-    std::string isbn;
-    unsigned int publication_year;
-    double price;
     std::string title;
-    unsigned int number;
+    double price;
+    unsigned int publication_year;
     BookType type;
+    std::string isbn;
+    unsigned int number;
 
 public:
     Book(Author new_author, std::string new_title, double new_price, unsigned int publication_year, BookType type);
