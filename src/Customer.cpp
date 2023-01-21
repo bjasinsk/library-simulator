@@ -33,8 +33,10 @@ void Customer::removeFromShoppingCart(Book &book){
     for(std::vector<std::shared_ptr<Book>>::iterator it = shoppingCart.begin(); it != shoppingCart.end(); ++it)
         {
             if(**it == book)
+            {
                 shoppingCart.erase(it);
                 break;
+            }
         }
 };
 

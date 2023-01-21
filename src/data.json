@@ -64,5 +64,20 @@
                 }
             ]
         }
+    ],
+    "Sellers":
+    [
+        {
+            "name": "Adam",
+            "surname": "Kowalski"
+        },
+        {
+            "name": "Anna",
+            "surname": "Komorowska"
+        },
+        {
+            "name": "Janusz",
+            "surname": "Radziwill"
+        }
     ]
 }
