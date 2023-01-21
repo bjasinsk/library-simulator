@@ -9,6 +9,8 @@ std::string Human::getSurname() const{
     return surname;
 };
 
-int Human::getAge() const{
-    return age;
-};
+std::ostream &operator<<(std::ostream &os, const Human &human)
+{
+    os << human.getName() << " " << human.getSurname() << std::endl;
+    return os;
+}

@@ -1,6 +1,5 @@
 #include "Bookshelf.h"
 
-
 void Bookshelf::sortBooks()
 {
     std::sort(books.begin(), books.end());
@@ -8,11 +7,10 @@ void Bookshelf::sortBooks()
 
 std::ostream &operator<<(std::ostream &os, const Bookshelf &b)
 {
+    int i = 1;
     for (std::shared_ptr<Book> book : b.books)
     {
-        // os << book->get_author().get_surname() << " " << book->get_author().get_name()
-        //    << " \"" << book->get_title() << "\"";
-        os << *book;
+        os << i++ << ". " << *book;
     }
     return os;
 }
@@ -24,7 +22,7 @@ void Bookshelf::addBooks(const Book &book, unsigned int number)
         b->addBooks(number);
     else
     {
-        std::shared_ptr<Book> new_book (new Book(book));
+        std::shared_ptr<Book> new_book(new Book(book));
         books.push_back(new_book);
     }
 }
@@ -34,20 +32,20 @@ void Bookshelf::removeBooks(const Book &book, unsigned int number)
     std::shared_ptr<Book> b = findBookIfExist(book);
     if (b != nullptr)
     {
-        if(b->getNumberOfBooks() > number)
+        if (b->getNumberOfBooks() > number)
             b->removeBooks(number);
         else
         {
-            for(std::vector<std::shared_ptr<Book>>::iterator it = books.begin(); it != books.end(); ++it)
+            for (std::vector<std::shared_ptr<Book>>::iterator it = books.begin(); it != books.end(); ++it)
             {
-                if(**it == book)
+                if (**it == book)
                     books.erase(it);
             }
         }
     }
     else
     {
-        //TODO: book not exist
+        // TODO: book not exist
     }
 }
 
@@ -70,8 +68,17 @@ unsigned int Bookshelf::checkBooksNumber(const Book &book) const
         return 0;
 }
 
+void Bookshelf::printBooksByCategory(Book::BookType category)
+{
+    for (std::shared_ptr<Book> book : books)
+    {
+        Book::BookType type = (Book::BookType)book->getCategoryEnum();
+        if(type == category)
+            std::cout << *book;
+    }
+}
 
-
-std::vector<std::shared_ptr<Book>> Bookshelf::getBooks(){
+std::vector<std::shared_ptr<Book>> Bookshelf::getBooks()
+{
     return books;
 };

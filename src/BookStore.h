@@ -14,7 +14,7 @@
 class BookStore
 {
     private:
-        Bookshelf Bookshelf;
+        Bookshelf bookshelf;
 
         std::vector<std::shared_ptr<Customer>> customers;
         std::vector<std::shared_ptr<Seller>> sellers;
@@ -23,19 +23,15 @@ class BookStore
         int counterOfSellers;
 
     public:
-        BookStore(): maxNumberOfSellers(3), counterOfSellers(0){};
-        BookStore(int numberOfSellers_): maxNumberOfSellers(numberOfSellers_), counterOfSellers(0){};
-
-        //pracownicy
+        BookStore(const Bookshelf& shelf): bookshelf(shelf), maxNumberOfSellers(3), counterOfSellers(0){};
+        BookStore(const Bookshelf& shelf, int numberOfSellers_): bookshelf(shelf), maxNumberOfSellers(numberOfSellers_), counterOfSellers(0){};
         void addSeller(Seller &seller);
         void removeSeller(Seller &seller);
-
-        //wchodzenie, wychodzenie klientów ze sklepu
         void customerEntersStore(Customer &customer);
         void customerLeavesStore(Customer &customer);
-
-
-        
+        Bookshelf& getBooshelfInstance();
+        int printSellers();
+        std::shared_ptr<Seller> getSellerByNum(int num);
 };
 
 

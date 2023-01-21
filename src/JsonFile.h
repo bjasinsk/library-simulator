@@ -3,7 +3,7 @@
 
 #include "json.h"
 #include <fstream>
-#include "Bookshelf.h"
+#include "BookStore.h"
 
 class JsonFile
 {
@@ -19,7 +19,7 @@ public:
         static JsonFile instance;
         return instance;
     }
-    void readData(std::string path, Bookshelf& dst);
+    void readData(std::string path, BookStore& dst);
 };
 
 #endif
