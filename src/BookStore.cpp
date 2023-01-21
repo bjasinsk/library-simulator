@@ -76,3 +76,116 @@ float BookStore::getBudget() const{
 void BookStore::setBudget(float budget){
     this->budget = budget;
 };
+
+
+void BookStore:: makeAnOrder(const Book& book, int quantity, const Customer& whoOrdered){
+
+    double priceOfOrder = book.get_price() * quantity;
+    // std::cout << priceOfOrder;
+    if (budget > priceOfOrder){
+
+        time_t time_since_begin = time(0);
+        tm *actual_time = localtime(&time_since_begin);
+        
+        Date dateOfOrder = Date(actual_time->tm_mday,actual_time->tm_mon + 1, actual_time->tm_year + 1900);
+
+        int idOfNewOrder = idOfLastOrder + 1;
+        idOfLastOrder = idOfNewOrder;
+
+        // std::cout << idOfNewOrder;
+        std::shared_ptr<Order> newOrder = std::make_shared<Order>(idOfNewOrder, dateOfOrder, book, quantity, whoOrdered);
+        doneOrders.push_back(newOrder);
+
+        float newBudget = budget - priceOfOrder;
+        budget = newBudget;
+
+        std::cout <<"Złożono podane zamówienie\n";
+
+    }else{
+        std::cout << "Zamówienie nie może zostatać złożone, księgarnia nie jest w stanie zamówić tych książek\n";
+
+    }
+};
+
+
+void BookStore:: removeAnOrder(int idOfOrderToRemove){
+    for(std::vector<std::shared_ptr<Order>>::iterator it = doneOrders.begin(); it != doneOrders.end(); ++it)
+        {
+            // (*it)->orderId
+            // (*(*it)).orderId
+            if((*it)->getOrderId() == idOfOrderToRemove){
+
+                int quantityOfRemovedOrder = (*it)->getQuantity();
+                int priceOfRemovedBook = (*it)->getOrderedBook().get_price();
+                float removedOrderPrice = priceOfRemovedBook*quantityOfRemovedOrder;
+                
+                float newBookStoreBudget = budget + removedOrderPrice;
+                
+                budget = newBookStoreBudget;
+                doneOrders.erase(it);
+                break;
+            }
+        }
+    std::cout << "Zamówienie o numerze: " << idOfOrderToRemove <<" zostało anulowane\n";
+};
+
+
+
+void BookStore:: modifyAnOrder(int idOfOrderToRemove, int newQuantity){
+    if(newQuantity == 0){
+        removeAnOrder(idOfOrderToRemove);
+    }
+    for(std::vector<std::shared_ptr<Order>>::iterator it = doneOrders.begin(); it != doneOrders.end(); ++it)
+        {
+            if((*it)->getOrderId() == idOfOrderToRemove){
+
+                int quantityOfModifiedOrder = (*it)->getQuantity();
+                int differenceBeetwenQuantities = quantityOfModifiedOrder - newQuantity;
+                double priceOfBook = (*it)->getOrderedBook().get_price();
+                float costToAdd = std::abs(differenceBeetwenQuantities) * priceOfBook;
+
+                if (differenceBeetwenQuantities < 0){
+                    if (budget > costToAdd){
+                        float newBudget = budget - costToAdd;
+                        budget = newBudget;
+
+                        (*it)->setQuantity(newQuantity);
+                    }else{
+                        std::cout << "Nie można zamówić takiej ilości książek, zamówienie nie zostało zmodyfikowane\n";
+                    }
+                }else{
+                    float newBudget = budget + costToAdd;
+                    budget = newBudget;
+
+                    (*it)->setQuantity(newQuantity);
+                };
+                break;
+            }
+        }
+
+};
+
+
+void BookStore::printCurrentOrders(){
+    int counter = 1;
+
+    if(doneOrders.empty()){
+        std::cout << "Aktualnie nie ma żadnych zamówień\n";
+        return;
+
+    }
+    for(std::vector<std::shared_ptr<Order>>::iterator it = doneOrders.begin(); it != doneOrders.end(); ++it){
+        std::cout << "Aktualna lista zamówień:\n";
+        std::cout << counter << ". \n";
+
+        std::cout << "id_zamówienia: " <<(*it)->getOrderId() << "| data_zamówienia: " <<  (*it)->getDateOfOrder() << "|\n";
+        std::cout << "książka: " << (*it)->getOrderedBook().get_title() << "| ilość_sztuk: " << (*it)->getQuantity() << "|\n";
+        std::cout << "zamówił: " << (*it)->getCustomer().getName() << " " << (*it)->getCustomer().getSurname() << "|\n";
+        std::cout << "\n";
+        counter++;
+    }
+
+};
+
+
+

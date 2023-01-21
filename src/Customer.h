@@ -20,7 +20,10 @@ class Customer : public Human
         double bill;
         Time timeOfEntrance;
         Time timeOfLeave;
+
+
     public:
+    
         Customer(std::string name, std::string surname, int age) : Human(name, surname, age) {
         };
 
@@ -43,6 +46,7 @@ class Customer : public Human
         
         //porównania
         bool operator==(const Customer &customer) const;
+
 };
 
 #endif

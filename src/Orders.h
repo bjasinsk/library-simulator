@@ -9,45 +9,31 @@
 #include "Book.h"
 #include "Customer.h"
 #include "Bookshelf.h"
-#include "BookStore.h"
+// #include "BookStore.h"
 #include "Date.h"
 
-struct order{
-    int orderId;
-    Date dateOfOrder;
-    Book book;
-    int quantity;
-    Customer whoOrdered;
-    order(int orderId_, Date dateOfOrder_, Book book_, int quantity_, Customer whoOrdered_):
-    orderId(orderId_), dateOfOrder(dateOfOrder_), book(book_), quantity(quantity_), whoOrdered(whoOrdered_) {}
-
-};
-
-
-class Orders
+class Order
 {
     private:
-        std::vector<std::shared_ptr<order>> doneOrders;
-        BookStore bookStore;
-        int idOfLastOrder;
+        int orderId;
+        Date dateOfOrder;
+        Book book;
+        int quantity;
+        Customer whoOrdered;
+
 
     public:
-        Orders(BookStore& bookStore_): bookStore(bookStore_), idOfLastOrder(0){};
+        Order(int orderId_, Date dateOfOrder_, Book book_, int quantity_, Customer whoOrdered_):
+        orderId(orderId_), dateOfOrder(dateOfOrder_), book(book_), quantity(quantity_), whoOrdered(whoOrdered_) {}
 
-        //złożenie zamówienia
-        void makeAnOrder(const Book& book, int quantity, const Customer& whoOrdered);
+        int getOrderId() const;
+        Date getDateOfOrder() const;
+        Book getOrderedBook() const;
+        int getQuantity() const;
+        Customer getCustomer() const;
+
+        void setQuantity(int quantity_);
         
-        //wycofanie zamówienia
-        void removeAnOrder(int idOfOrderToRemove);
-
-        //modyfikacja zamówienia
-        void modifyAnOrder(int idOfOrderToRemove, int newQuantity);
-
-        //dostępność
-        void checkDeliveryTime(const Book& book);
-
-        
-
 };
 
 #endif

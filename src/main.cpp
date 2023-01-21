@@ -21,7 +21,7 @@ int main()
 
     BookStore sklep1;
     Bookshelf bookshelf;
-    JsonFile::getInstance().readData("C:\\Users\\danie\\Desktop\\PROI\\projekt\\src\\data.json", bookshelf);
+    JsonFile::getInstance().readData("D:\\Studia\\data.json", bookshelf);
 
     Author author_karol_may = Author("Karol", "Maj");
     Author author_bernard_cornwell = Author("Bernard", "Cornwell");
@@ -50,12 +50,19 @@ int main()
     sklep1.customerEntersStore(tomek);
     std:: cout << "\n";
     // czas pobytu 20 sekund
-    std::this_thread::sleep_for(std::chrono::milliseconds(20000));    
-    sklep1.customerLeavesStore(tomek);
+    // std::this_thread::sleep_for(std::chrono::milliseconds(20000));    
+    // sklep1.customerLeavesStore(tomek);
     
+    sklep1.makeAnOrder(b1,2,tomek);
+    sklep1.printCurrentOrders();
+
+
+    sklep1.modifyAnOrder(1,0);
+    // sklep1.removeAnOrder(1);
+    sklep1.printCurrentOrders();
 
     
-
+    std::cout << "\n";
     
     return 0;
 }
