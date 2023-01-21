@@ -1,6 +1,7 @@
 #include "BookStore.h"
 
 void BookStore::addSeller(Seller &seller){
+
     if(counterOfSellers == maxNumberOfSellers){
         std::cout << "Jest już maksymalna liczba sprzedawców na zmianie\n";
         return;
@@ -14,6 +15,7 @@ void BookStore::addSeller(Seller &seller){
 
 
 void BookStore::removeSeller(Seller &seller){
+
     for(std::vector<std::shared_ptr<Seller>>::iterator it = sellers.begin(); it != sellers.end(); ++it)
         {
             if(**it == seller)
@@ -25,6 +27,7 @@ void BookStore::removeSeller(Seller &seller){
 
 
 void BookStore::customerEntersStore(Customer &customer){
+
     std::shared_ptr<Customer> new_customer (new Customer(customer));
     customers.push_back(new_customer);
     
@@ -62,4 +65,14 @@ void BookStore::customerLeavesStore(Customer &customer){
 
     std:: cout << "Klient przebywał w sklepie: " << timeInStore.getHour() << "h" << timeInStore.getMinute() << "min" << timeInStore.getSeconds() << "sec\n";
 
+};
+
+
+float BookStore::getBudget() const{
+    return budget;
+};
+
+
+void BookStore::setBudget(float budget){
+    this->budget = budget;
 };

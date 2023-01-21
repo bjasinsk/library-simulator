@@ -16,15 +16,18 @@ class BookStore
     private:
         Bookshelf Bookshelf;
 
-        std::vector<std::shared_ptr<Customer>> customers;
-        std::vector<std::shared_ptr<Seller>> sellers;
+        std::vector<std::shared_ptr<Customer> > customers;
+        std::vector<std::shared_ptr<Seller> > sellers;
 
         int maxNumberOfSellers;
         int counterOfSellers;
+        float budget;
+
 
     public:
-        BookStore(): maxNumberOfSellers(3), counterOfSellers(0){};
-        BookStore(int numberOfSellers_): maxNumberOfSellers(numberOfSellers_), counterOfSellers(0){};
+        BookStore(): maxNumberOfSellers(3), counterOfSellers(0), budget(10000.00) {};
+        BookStore(int numberOfSellers_, float bookstoreBudget_): 
+        maxNumberOfSellers(numberOfSellers_), budget(bookstoreBudget_), counterOfSellers(0){};
 
         //pracownicy
         void addSeller(Seller &seller);
@@ -34,8 +37,9 @@ class BookStore
         void customerEntersStore(Customer &customer);
         void customerLeavesStore(Customer &customer);
 
+        float getBudget() const;
+        void setBudget(float budget);
 
-        
 };
 
 
