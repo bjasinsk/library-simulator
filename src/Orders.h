@@ -13,6 +13,7 @@ class Orders
     private:
         std::vector<std::shared_ptr<Book>> booksToOrder;
         Bookshelf Bookshelf;
+        
     public:
         Orders(){};
 
@@ -25,7 +26,7 @@ class Orders
         //dostępność
         void checkDeliveryTime(const Book& book);
 
-        
+
 
 };
 
