@@ -6,6 +6,16 @@
 #include <iomanip>
 #include <algorithm>
 
+std::unordered_map<Book::BookType, std::string> Book::type_map
+{
+    {ADVENTURE, "Adventure"},
+    {COOKERY, "Cookery"},
+    {CRIME, "Crime"},
+    {HISTORY, "History"},
+    {SCIFI, "Sci-fi"},
+    {POETRY, "Poetry"}
+};
+
 Book::Book(Author new_author, std::string new_title, double new_price, unsigned int publication, BookType t)
     : author(new_author), title(new_title), price(new_price), publication_year(publication), type(t)
 {
@@ -34,6 +44,11 @@ Book::Book(Author new_author, std::string new_title, double new_price, unsigned 
 std::string Book::getCategory() const
 {
     return BookType_to_string(type);
+}
+
+Book::BookType Book::getCategoryEnum() const
+{
+    return type;
 }
 
 Author Book::get_author() const
@@ -103,42 +118,24 @@ std::ostream &operator<<(std::ostream &os, const Book &b)
     return os;
 }
 
-std::string Book::BookType_to_string(BookType b) const
+std::string Book::BookType_to_string(BookType b)
 {
-    std::unordered_map<BookType, std::string> m
-    {
-        {ADVENTURE, "Adventure"},
-        {COOKERY, "Cookery"},
-        {CRIME, "Crime"},
-        {HISTORY, "History"},
-        {SCIFI, "Sci-fi"},
-        {POETRY, "Poetry"}
-    };
-    return m[b];
+    return type_map[b];
 }
 
 template <typename T1, typename T2>
-T1 find_key(std::unordered_map<T1, T2>& m, T2 value)
+T1 find_key(std::unordered_map<T1, T2> &m, T2 value)
 {
     auto it = std::find_if(m.begin(), m.end(),
-        [&](const std::pair<T1, T2>& p) { return p.second == value; });
+                           [&](const std::pair<T1, T2> &p)
+                           { return p.second == value; });
     if (it != m.end())
         return it->first;
     else
-        throw std::invalid_argument("value not found in map");
+        throw std::invalid_argument("Value not found in map");
 }
 
 Book::BookType Book::string_to_BookType(std::string category)
 {
-    std::unordered_map<BookType, std::string> map
-    {
-        {ADVENTURE, "Adventure"},
-        {COOKERY, "Cookery"},
-        {CRIME, "Crime"},
-        {HISTORY, "History"},
-        {SCIFI, "Sci-fi"},
-        {POETRY, "Poetry"}
-    };
-
-    return find_key(map, category);
+    return find_key(type_map, category);
 }
