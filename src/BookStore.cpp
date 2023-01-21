@@ -88,3 +88,13 @@ std::shared_ptr<Seller> BookStore::getSellerByNum(int num)
         throw ExceptionLibraryNoValue("Brak sprzedawcy o takim numerze");
     return sellers.at(num-1);
 }
+
+float BookStore::getBudget() const
+{
+    return budget;
+};
+
+void BookStore::setBudget(float budget)
+{
+    this->budget = budget;
+};
