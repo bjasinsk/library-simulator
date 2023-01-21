@@ -2,15 +2,27 @@
     "tasks": [
         {
             "type": "cppbuild",
-            "label": "build",
-            "command": "g++.exe",
+            "label": "C/C++: g++.exe kompiluj aktywny plik",
+            "command": "C:\\MinGW\\bin\\g++.exe",
             "args": [
                 "-fdiagnostics-color=always",
                 "-Wall",
                 "-g",
-                "*.cpp",
+                "main.cpp",
+                "Author.cpp",
+                "Book.cpp",
+                "Bookshelf.cpp",
+                "Customer.cpp",
+                "Date.cpp",
+                "Human.cpp",
+                "Seller.cpp",
+                "Time.cpp",
+                "JsonFile.cpp",
+                "Menu.cpp",
+                "BookStore.cpp",
+                "Orders.cpp",
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+                "${workspaceFolder}\\main.exe"
             ],
             "options": {
                 "cwd": "${fileDirname}"
@@ -18,7 +30,10 @@
             "problemMatcher": [
                 "$gcc"
             ],
-            "group": "build",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
             "detail": "Zadanie wygenerowane przez debuger."
         }
     ],

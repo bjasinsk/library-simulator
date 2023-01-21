@@ -29,7 +29,7 @@ int main()
     Author author_bernard_cornwell = Author("Bernard", "Cornwell");
     std::cout << bookshelf;
 
-    Customer tomek = Customer("Tomek", "Kowalski", 1);
+    Customer tomek = Customer("Tomek", "Kowalski");
     Book b1 = Book(author_karol_may, "Skarb w srebrnym jeziorze", 29.99, 2014, Book::BookType::ADVENTURE);
     tomek.addToShoppingCart(b1);
     tomek.printActualShoppingCart();
