@@ -8,17 +8,14 @@ class Human
     private:
         std::string name;
         std::string surname;
-        int age;
     public:
-        Human(std::string name_, std::string surname_, int age_) : name(name_), surname(surname_), age(age_){};
+        Human(std::string name_, std::string surname_) : name(name_), surname(surname_){};
 
         //gettery
         std::string getName() const;
         std::string getSurname() const;
-        int getAge() const;
-
-        
-
+        friend std::ostream &operator<<(std::ostream &os, const Human &human);
 };
+std::ostream &operator<<(std::ostream &os, const Human &human);
 
 #endif
