@@ -9,6 +9,8 @@ class Menu
     private:
         BookStore* bookstore;
         std::shared_ptr<Seller> seller;
+        std::shared_ptr<Customer> customer;
+
         
     public:
         Menu(const BookStore& bookstore);
@@ -17,7 +19,12 @@ class Menu
         Book::BookType chooseBookCategory();
         std::string getStringFromUser();
         void sellersMenu();
+        void customersMenu();
         void sellerOptionsMenu(); //zamawianie ksiazek, albo wykorzystanie pointera z parametru, albo przekazywac jako wartosc. Do rozwazenia
+        void customerOptionsMenu();
+
+        
+
 };
 
 #endif

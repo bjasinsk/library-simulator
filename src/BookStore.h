@@ -33,7 +33,9 @@ class BookStore
         void customerLeavesStore(Customer &customer);
         Bookshelf& getBooshelfInstance();
         int printSellers();
+        int printCutomers();
         std::shared_ptr<Seller> getSellerByNum(int num);
+        std::shared_ptr<Customer> getCustomerByNum(int num);
         float getBudget() const;
         void setBudget(float budget);
         

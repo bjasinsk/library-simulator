@@ -82,12 +82,30 @@ int BookStore::printSellers()
     return --i;
 }
 
+int BookStore::printCutomers()
+{
+    int i = 1;
+    for(auto customer: customers)
+    {
+        std::cout <<i++ << ". " << *customer;
+    }
+    return --i;
+}
+
 std::shared_ptr<Seller> BookStore::getSellerByNum(int num)
 {
     if ((int)sellers.size() < num)
         throw ExceptionLibraryNoValue("Brak sprzedawcy o takim numerze");
     return sellers.at(num - 1);
 }
+
+std::shared_ptr<Customer> BookStore::getCustomerByNum(int num)
+{
+    if ((int)customers.size() < num)
+        throw ExceptionLibraryNoValue("Brak sprzedawcy o takim numerze");
+    return customers.at(num - 1);
+};
+
 
 float BookStore::getBudget() const
 {
@@ -192,5 +210,22 @@ void BookStore::printCurrentOrders()
         std::cout << "zamówił: " << (*it)->getCustomer().getName() << " " << (*it)->getCustomer().getSurname() << "|\n";
         std::cout << "\n";
         counter++;
+    }
+};
+
+
+void BookStore::showAvailableSellersWithQueues(){
+    int counter1 = 1;
+    for (std::vector<std::shared_ptr<Seller>>::iterator it = sellers.begin(); it != sellers.end(); ++it){
+        std::cout << counter1 << ". Sprzedawca: " <<(*it)->getName() << " " << (*it)->getSurname() << "\n";
+        std::cout << "Kolejka do powyższego sprzedawcy: \n";
+        auto queueOfCustomers = (*it)->getQueueOfCustomers();
+        int counter = 1;
+        while (!queueOfCustomers.empty()){
+            std::cout << "-----" << counter << ". " << queueOfCustomers.front()->getName() << " " << queueOfCustomers.front()->getSurname() << "\n";
+            counter++;
+            queueOfCustomers.pop();
+        }
+        counter1++;
     }
 };

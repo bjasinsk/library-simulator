@@ -60,3 +60,10 @@ bool Seller::operator==(const Seller &seller) const
 {
     return this->getName() == seller.getName() && this->getSurname() == seller.getSurname();
 }
+
+
+
+std::queue<std::shared_ptr<Customer>> Seller::getQueueOfCustomers() const{
+    return q;
+
+};
