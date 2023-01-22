@@ -333,11 +333,13 @@ void Menu::customerOptionsMenu()
     while (true)
     {
         cout << "1. Pokaż sprzedawców z ich kolejkami" << endl;
-
         cout << "2. Wejdź do kolejki" << endl;
-        cout << "3. Pokaz ksiazki autora" << endl;
-        
-        cout << "4. Wyjdź ze sklepu" << endl;
+
+        cout << "3. Dodaj książke do koszyka" << endl;
+        cout << "4. Aktualny koszyk" << endl;
+        cout << "5. Usuń książke z koszyka" << endl;
+
+        cout << "6. Wyjdź ze sklepu" << endl;
         cout << "0. Wyjscie" << endl;
         cout << "Wybierz opcje: ";
         cin >> choice;
@@ -374,9 +376,25 @@ void Menu::customerOptionsMenu()
         }
         case 3:
         {
+            Book::BookType type = chooseBookCategory();
+            bookstore->getBooshelfInstance().printBooksByCategory(type);
+            
+
             break;
         }
         case 4:
+        {   
+            (this->customer)->printActualShoppingCart();
+            break;
+        }
+        case 5:
+        {
+            (this->customer)->printActualShoppingCart();
+            std::cout << "Wybierz, którą książke chcesz usunąć\n";
+            
+            break;
+        }
+        case 6:
         {
             bookstore->customerLeavesStore((*(this->customer)));
             this->customer = nullptr;

@@ -19,6 +19,7 @@ public:
     };
  
 private:
+    // int bookId;
     Author author;
     std::string title;
     double price;
@@ -27,6 +28,7 @@ private:
     std::string isbn;
     unsigned int number;
 
+    // static int counter;
 public:
     Book(Author new_author, std::string new_title, double new_price, unsigned int publication_year, BookType type);
     Author get_author() const;
@@ -48,5 +50,6 @@ public:
 };
 
 std::ostream &operator<<(std::ostream &os, const Book &book);
+// int Book::counter = 0;
 
 #endif
