@@ -22,15 +22,37 @@ class Seller : public Human
     public:
         Seller(std::string name, std::string surname, Bookshelf& books, std::shared_ptr<float> budget) : Human(name, surname), books(books), budgetOfStore(budget) {};
 
-        //obsługa klienta, wyliczanie rachunku 
+        
+        /**
+         * Metoda dodająca klienta do kolejki sprzedawcy
+         * @param new_customer klient dodany do kolejki
+        */
         void addCustomerToQueue(std::shared_ptr<Customer> new_customer);
+        /**
+         * Metoda usuwająca klient z kolejki sprzedawcy
+        */
         void removeCustomerFromQueue();
+        /**
+         * metoda obsługująca pierwszego klienta w kolejce
+        */
         void serveFirstCustomerInQueue();
 
 
-        //zapytaj sprzedawce o książke
+        /**
+         * Metoda sprawdzająca dostępność ksiązki po tytule
+         * @param title tytuł książki
+        */
         void checkAvailabilityByTitle (std::string title);
+        /**
+         * Metoda pokazaująca książki danego autora
+         * @param name imie autora
+         * @param surname nazwisko autora
+        */
         void showBooksByAuthor (std::string name, std::string surname);
+        /**
+         * Metoda pokazująca książki z danej kategorii
+         * @param category kategoria, z której mają być pokazane książki
+        */
         void showBooksByCategory (std::string category);
 
         //porównania

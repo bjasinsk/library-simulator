@@ -14,8 +14,13 @@ class Human
     public:
         Human(std::string name_, std::string surname_) : name(name_), surname(surname_){};
 
-        //gettery
+        /**
+         * Metoda zwracająca imię
+        */
         std::string getName() const;
+        /**
+         * Metoda zwracająca nazwisko
+        */
         std::string getSurname() const;
         friend std::ostream &operator<<(std::ostream &os, const Human &human);
 };
