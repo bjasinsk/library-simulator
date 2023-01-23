@@ -78,7 +78,34 @@ void Bookshelf::printBooksByCategory(Book::BookType category)
     }
 }
 
-std::vector<std::shared_ptr<Book>> Bookshelf::getBooks()
+std::vector<std::shared_ptr<const Book>> Bookshelf::getBooks()
 {
-    return books;
+    std::vector<std::shared_ptr<const Book>> copy;
+    for (std::shared_ptr<Book> book : books)
+    {
+        copy.push_back(book);
+    }
+    return copy;
+};
+
+std::vector<std::shared_ptr<const Book>> Bookshelf::getBooksByAuthor(Author author)
+{
+    std::vector<std::shared_ptr<const Book>> copy;
+    for (std::shared_ptr<Book> book : books)
+    {
+        if (book->get_author() == author)
+        copy.push_back(book);
+    }
+    return copy;
+};
+
+std::vector<std::shared_ptr<const Book>> Bookshelf::getBooksByTytle(std::string title)
+{
+    std::vector<std::shared_ptr<const Book>> copy;
+    for (std::shared_ptr<Book> book : books)
+    {
+        if (book->get_title() == title)
+        copy.push_back(book);
+    }
+    return copy;
 };

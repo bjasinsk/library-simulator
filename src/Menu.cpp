@@ -14,6 +14,7 @@ void Menu::mainMenu()
     int choice;
     while (true)
     {
+        cout << endl;
         cout << "1. Ksiazki" << endl;
         cout << "2. Klienci" << endl;
         cout << "3. Sprzedawcy" << endl;
@@ -53,6 +54,7 @@ void Menu::booksMenu()
     int choice;
     while (true)
     {
+        cout << endl;
         cout << "1. Lista  wszystkich ksiazek" << endl;
         cout << "2. Lista ksiazek z kategorii" << endl;
         cout << "3. Wyszukaj ksiazki po autorze" << endl;
@@ -143,7 +145,6 @@ std::string Menu::getStringFromUser()
     std::cin >> text;
     return text;
 }
-
 
 void Menu::sellersMenu()
 {
@@ -274,6 +275,7 @@ void Menu::customersMenu()
     int choice;
     while (true)
     {
+        cout << endl;
         cout << "1. Lista klientów" << endl;
         cout << "2. Dodaj klienta" << endl;
         cout << "0. Wyjscie" << endl;
@@ -289,6 +291,7 @@ void Menu::customersMenu()
         {
         case 1:
         {   
+            cout << endl;
             int number_of_customers = bookstore->printCutomers();
             cout << "Wybierz klienta:" << endl;
             cout << "0. Cofnij" << endl;
@@ -302,13 +305,13 @@ void Menu::customersMenu()
             }
             if(num == 0)
                 return;
-            this->customer = bookstore->getCustomerByNum(num);
-            customerOptionsMenu();
+            shared_ptr<Customer> customer = bookstore->getCustomerByNum(num);
+            customerOptionsMenu(customer);
             break;
         }
         case 2:
         {
-            cout << "Podaj imie" << endl;
+            cout << endl << "Podaj imie" << endl;
             string name = getStringFromUser();
             cout << "Podaj nazwisko" << endl;
             string surname = getStringFromUser();
@@ -326,24 +329,23 @@ void Menu::customersMenu()
 
 
 
-void Menu::customerOptionsMenu()
+void Menu::customerOptionsMenu(std::shared_ptr<Customer> customer)
 {
     using namespace std;
     int choice;
     while (true)
     {
+        cout << endl;
         cout << "1. Pokaż sprzedawców z ich kolejkami" << endl;
         cout << "2. Wejdź do kolejki" << endl;
-
         cout << "3. Dodaj książke do koszyka" << endl;
         cout << "4. Aktualny koszyk" << endl;
         cout << "5. Usuń książke z koszyka" << endl;
-
         cout << "6. Wyjdź ze sklepu" << endl;
         cout << "0. Wyjscie" << endl;
         cout << "Wybierz opcje: ";
         cin >> choice;
-        if (cin.fail() || choice < 0 || choice > 4)
+        if (cin.fail() || choice < 0 || choice > 6)
         {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -359,7 +361,7 @@ void Menu::customerOptionsMenu()
         case 2:
         {
             int number_of_sellers = bookstore->printSellers();
-            cout << "Wybierz sprzedawce, do którego kolejki chcesz wejść:" << endl;
+            cout << endl << "Wybierz sprzedawce, do którego kolejki chcesz wejść:" << endl;
             cout << "0. Cofnij" << endl;
             int num;
             cin >> num;
@@ -376,28 +378,35 @@ void Menu::customerOptionsMenu()
         }
         case 3:
         {
-            Book::BookType type = chooseBookCategory();
-            bookstore->getBooshelfInstance().printBooksByCategory(type);
-            
-
+            auto book = getBook();
+            customer->addToShoppingCart(book);
             break;
         }
         case 4:
         {   
-            (this->customer)->printActualShoppingCart();
+            cout << endl;
+            customer->printActualShoppingCart();
             break;
         }
         case 5:
         {
-            (this->customer)->printActualShoppingCart();
+            customer->printActualShoppingCart();
+            std::vector<std::shared_ptr<Book>> books = customer->getShoppingCart();
             std::cout << "Wybierz, którą książke chcesz usunąć\n";
-            
+            int num;
+            cin >> num;
+            if (cin.fail() || num < 0 || num >= (int)books.size())
+            {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                continue;
+            }
+            customer->removeFromShoppingCart(*(books[num]));
             break;
         }
         case 6:
         {
-            bookstore->customerLeavesStore((*(this->customer)));
-            this->customer = nullptr;
+            bookstore->customerLeavesStore((*customer));
             return;
         }
         case 0:
@@ -405,4 +414,28 @@ void Menu::customerOptionsMenu()
         }
     }
     return;
+}
+
+const Book& Menu::getBook()
+{
+    using namespace std;
+    int choice;
+    while (true)
+    {
+        int i = 0;
+        cout << endl;
+        auto books = bookstore->getBooshelfInstance().getBooks();
+        for (auto book : books)
+            cout << i++  << ". "<< *book;
+        cout << "Wybierz ksiazke: ";
+        cin >> choice;
+        if (cin.fail() || choice < 0 || choice >= (int)books.size())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
+        cout << *(books[choice]);
+        return *(books[choice]);  
+    }
 }

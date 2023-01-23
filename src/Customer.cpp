@@ -12,14 +12,14 @@ std::vector<std::shared_ptr<Book>> Customer::getShoppingCart() const{
 
 void Customer::printActualShoppingCart(){
     std::cout << "Aktualny koszyk Klienta: \n";
-
+    int j = 0;
     for (auto i: shoppingCart){
-        std::cout <<"Tytuł: " <<  i->get_title() << "\n";
+        std::cout << j++ << ". " <<"Tytuł: " <<  i->get_title() << "\n";
     }
 };
 
 
-void Customer::addToShoppingCart(Book &book){
+void Customer::addToShoppingCart(const Book &book){
     std::shared_ptr<Book> new_book (new Book(book));
     shoppingCart.push_back(new_book);
 };
