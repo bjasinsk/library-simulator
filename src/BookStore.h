@@ -29,14 +29,42 @@ class BookStore
     public:
         BookStore(const Bookshelf& shelf): bookshelf(shelf), maxNumberOfSellers(3), counterOfSellers(0), idOfLastOrder(0){budget = std::make_shared<float>(10000);};
         BookStore(const Bookshelf& shelf, int numberOfSellers_, float storeBudget): bookshelf(shelf), maxNumberOfSellers(numberOfSellers_), counterOfSellers(0), idOfLastOrder(0){budget = std::make_shared<float>(storeBudget);};
+        /**
+         * Metoda dodająca Sprzedawce do księgarni
+         * @param seller sprzedawca
+        */
         void addSeller(Seller &seller);
+        /**
+         * Metoda usuwająca Sprzedawce z księgarni
+         * @param seller sprzedawca
+        */
         void removeSeller(Seller &seller);
+        /**
+         * Metoda, dzięki której klient wchodzi do księgarni
+         * @param customer klient
+        */
         void customerEntersStore(Customer &customer);
+        /**
+         * Metoda, dzięki której klient wychodzi z księgarni
+         * @param customer klient
+         */ 
         void customerLeavesStore(Customer &customer);
         Bookshelf& getBooshelfInstance();
+        /**
+         * Metoda wypisujaca sprzedawców bedących aktualnie w księgarni
+        */
         int printSellers();
+        /**
+         * Metoda wypisująca klientów będących aktualnie w księgarni
+        */
         int printCutomers();
+        /**
+         * Metoda, dzięki której możliwy jest wybór sprzedawcy po konkretnym numerze
+        */
         std::shared_ptr<Seller> getSellerByNum(int num);
+        /**
+         * Metoda, dzięki której możliwy jest wybór klienta po konkretnym numerze
+        */
         std::shared_ptr<Customer> getCustomerByNum(int num);
 
         float getBudget() const;
@@ -44,18 +72,32 @@ class BookStore
         void addCash(float cash);
         void getCash(float cash);
         std::shared_ptr<float> accessToBudget();
-        
-        //złożenie zamówienia
+        /**
+         * Metoda składająca zamówienie
+         * @param book książka
+         * @param quantity ilość książek
+         * @param whoOrdered klient, który złożył zamówienie
+        */
         void makeAnOrder(const Book& book, int quantity, const Customer& whoOrdered);
         
-        //wycofanie zamówienia
+        /**
+         * Metoda wycofująca zamówienie
+         * @param idOfOrderToRemove id zamówienia, które chcemy usunać
+        */
         void removeAnOrder(int idOfOrderToRemove);
-
-        //modyfikacja zamówienia
+        /**
+         * Metoda modyfikująca zamówienie
+         * @param idOfOrderToRemove id zamówienia, które chcemy zmodyfikować
+         * @param newQuantity nowa ilość danej książki w zmodyfikowanym zamówieniu
+        */
         void modifyAnOrder(int idOfOrderToRemove, int newQuantity);
-
-        //wypis aktualnego stanu księgarni
+        /**
+         * Metoda wypisująca aktualny stan zamówień w księagrni
+        */
         void printCurrentOrders();
+        /**
+         * Metoda wypisująca sprzedawców i ich kolejki
+        */
         void showAvailableSellersWithQueues();
 
 };
