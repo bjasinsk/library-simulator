@@ -17,7 +17,7 @@ std::unordered_map<Book::BookType, std::string> Book::type_map
 };
 
 Book::Book(Author new_author, std::string new_title, double new_price, unsigned int publication, BookType t)
-    : author(new_author), title(new_title), price(new_price), publication_year(publication), type(t)
+    : author(new_author), title(new_title), price(new_price), publication_year(publication), type(t), number(0)
 {
     int num1, num2, num3, num4, num5;
     if (new_price <= 0.0)
@@ -114,7 +114,7 @@ bool Book::operator==(const Book &b) const
 
 std::ostream &operator<<(std::ostream &os, const Book &b)
 {
-    os << b.author << " \"" << b.title << "\" " << b.publication_year << " " << b.isbn << " " << b.price << "zl" << std::endl;
+    os << b.author << " \"" << b.title << "\" " << b.publication_year << " " << b.isbn << " " << b.price << "zl  " << b.number << " sztuk" << std::endl;
     return os;
 }
 

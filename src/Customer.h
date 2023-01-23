@@ -27,8 +27,9 @@ class Customer : public Human
         //koszyk
         std::vector<std::shared_ptr<Book>> getShoppingCart() const;
         void printActualShoppingCart();
-        void addToShoppingCart(Book &book);
+        void addToShoppingCart(const Book &book);
         void removeFromShoppingCart(Book &book);
+        void buyShoppingCart();
 
         //rachunek
         double getActualBill() const;

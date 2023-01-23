@@ -15,13 +15,14 @@ class Seller : public Human
         //w księgarni pracuje pewna liczba sprzedawców, do każdego sprzedawcy ustawia się kolejka
         std::queue<std::shared_ptr<Customer>> q;
         Bookshelf books;
+        std::shared_ptr<float> budgetOfStore;
     public:
-        Seller(std::string name, std::string surname, Bookshelf& books) : Human(name, surname), books(books) {};
+        Seller(std::string name, std::string surname, Bookshelf& books, std::shared_ptr<float> budget) : Human(name, surname), books(books), budgetOfStore(budget) {};
 
         //obsługa klienta, wyliczanie rachunku 
-        void addCustomerToQueue(Customer &client);
+        void addCustomerToQueue(std::shared_ptr<Customer> new_customer);
         void removeCustomerFromQueue();
-        double BillForFirstCustomerInQueue();
+        void serveFirstCustomerInQueue();
 
 
         //zapytaj sprzedawce o książke
@@ -31,6 +32,10 @@ class Seller : public Human
 
         //porównania
         bool operator==(const Seller &seller) const;
+
+        std::queue<std::shared_ptr<Customer>> getQueueOfCustomers() const;
+        void printQueueOfCustomers();
 };
+
 
 #endif

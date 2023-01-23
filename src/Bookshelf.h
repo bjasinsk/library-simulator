@@ -20,7 +20,9 @@ class Bookshelf
         unsigned int checkBooksNumber(const Book& book) const;
         void printBooksByCategory(Book::BookType category);
         friend std::ostream& operator<<(std::ostream& os, const Bookshelf& b);
-        std::vector<std::shared_ptr<Book>> getBooks();
+        std::vector<std::shared_ptr<const Book>> getBooks();
+        std::vector<std::shared_ptr<const Book>> getBooksByAuthor(Author author);
+        std::vector<std::shared_ptr<const Book>> getBooksByTytle(std::string title);
 };
 
 std::ostream& operator<<(std::ostream& os, const Bookshelf& b);
