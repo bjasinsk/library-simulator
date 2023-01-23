@@ -180,8 +180,8 @@ void Menu::sellersMenu()
                 }
                 if(num == 0)
                     return;
-                this->seller = bookstore->getSellerByNum(num);
-                sellerOptionsMenu();
+                auto seller = bookstore->getSellerByNum(num);
+                sellerOptionsMenu(seller);
                 break;
             }
             case 2:
@@ -201,7 +201,7 @@ void Menu::sellersMenu()
     return;
 }
 
-void Menu::sellerOptionsMenu()
+void Menu::sellerOptionsMenu(std::shared_ptr<Seller> seller)
 {
     using namespace std;
     int choice;
@@ -210,11 +210,13 @@ void Menu::sellerOptionsMenu()
         cout << "1. Zapytaj o dostepnosc ksiazki" << endl;
         cout << "2. Pokaz ksiazki z kategorii" << endl;
         cout << "3. Pokaz ksiazki autora" << endl;
-        cout << "4. Zakoncz prace" << endl;
+        cout << "4. Pokaz kolejke" << endl;
+        cout << "5. Obsluz klienta" << endl;
+        cout << "6. Zakoncz prace" << endl;
         cout << "0. Wyjscie" << endl;
         cout << "Wybierz opcje: ";
         cin >> choice;
-        if (cin.fail() || choice < 0 || choice > 4)
+        if (cin.fail() || choice < 0 || choice > 6)
         {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -256,8 +258,17 @@ void Menu::sellerOptionsMenu()
         }
         case 4:
         {
-            bookstore->removeSeller(*(this->seller));
-            this->seller = nullptr;
+            seller->printQueueOfCustomers();
+            return;
+        }
+        case 5:
+        {
+            seller->BillForFirstCustomerInQueue();
+            return;
+        }
+        case 6:
+        {
+            bookstore->removeSeller(*seller);
             return;
         }
         case 0:

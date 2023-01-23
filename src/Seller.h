@@ -33,6 +33,7 @@ class Seller : public Human
         bool operator==(const Seller &seller) const;
 
         std::queue<std::shared_ptr<Customer>> getQueueOfCustomers() const;
+        void printQueueOfCustomers();
 };
 
 

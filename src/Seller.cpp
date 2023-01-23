@@ -61,7 +61,16 @@ bool Seller::operator==(const Seller &seller) const
     return this->getName() == seller.getName() && this->getSurname() == seller.getSurname();
 }
 
-
+void Seller::printQueueOfCustomers()
+{
+    auto queueOfCustomers = getQueueOfCustomers();
+    int counter = 1;
+    while (!queueOfCustomers.empty()){
+        std::cout << "-----" << counter << ". " << queueOfCustomers.front()->getName() << " " << queueOfCustomers.front()->getSurname() << "\n";
+        counter++;
+        queueOfCustomers.pop();
+    }
+}
 
 std::queue<std::shared_ptr<Customer>> Seller::getQueueOfCustomers() const{
     return q;
