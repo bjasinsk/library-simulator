@@ -1,7 +1,6 @@
 #include "Seller.h"
 
-void Seller::addCustomerToQueue(Customer &client){
-    std::shared_ptr<Customer> new_customer (new Customer(client));
+void Seller::addCustomerToQueue(std::shared_ptr<Customer> new_customer){
     q.push(new_customer);
 };
 
@@ -9,12 +8,20 @@ void Seller::removeCustomerFromQueue(){
     q.pop();
 };
 
-double Seller::BillForFirstCustomerInQueue(){
+void Seller::serveFirstCustomerInQueue(){
+    if(q.size() == 0)
+    {
+        std::cout << "Brak klientow w kolejce" << std::endl;
+        return;
+    }
     auto clientToServe = q.front();
+    auto books = clientToServe->getShoppingCart();
+    for (auto book : books)
+        book->removeBooks(1);
     clientToServe->calculateBill();
+    *budgetOfStore += clientToServe->getActualBill();
+    clientToServe->buyShoppingCart();
     removeCustomerFromQueue();
-
-    return clientToServe->getActualBill();
 };
 
 

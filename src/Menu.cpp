@@ -18,7 +18,7 @@ void Menu::mainMenu()
         cout << "1. Ksiazki" << endl;
         cout << "2. Klienci" << endl;
         cout << "3. Sprzedawcy" << endl;
-        cout << "4. Czas" << endl;
+        cout << "4. Kasa" << endl;
         cout << "0. Wyjscie" << endl;
         cout << "Wybierz opcje: ";
         cin >> choice;
@@ -40,6 +40,7 @@ void Menu::mainMenu()
             sellersMenu();
             break;
         case 4:
+            cout << "W kasie jest: "<< this->bookstore->getBudget() << "zl" << endl;
             break;
         case 0:
             return;
@@ -190,7 +191,7 @@ void Menu::sellersMenu()
                 string name = getStringFromUser();
                 cout << "Podaj nazwisko" << endl;
                 string surname = getStringFromUser();
-                Seller seller(name, surname, this->bookstore->getBooshelfInstance());
+                Seller seller(name, surname, this->bookstore->getBooshelfInstance(), bookstore->accessToBudget());
                 bookstore->addSeller(seller);
                 break;
             }
@@ -259,12 +260,12 @@ void Menu::sellerOptionsMenu(std::shared_ptr<Seller> seller)
         case 4:
         {
             seller->printQueueOfCustomers();
-            return;
+            break;
         }
         case 5:
         {
-            seller->BillForFirstCustomerInQueue();
-            return;
+            seller->serveFirstCustomerInQueue();
+            break;
         }
         case 6:
         {
@@ -384,7 +385,7 @@ void Menu::customerOptionsMenu(std::shared_ptr<Customer> customer)
             }
             if(num == 0)
                 return;
-            bookstore->getSellerByNum(num)->addCustomerToQueue(*customer.get());
+            bookstore->getSellerByNum(num)->addCustomerToQueue(customer);
             break;
         }
         case 3:

@@ -32,7 +32,7 @@ void JsonFile::readData(std::string path, BookStore& dst)
     {
         std::string name = i["name"];
         std::string surname = i["surname"];
-        Seller seller(name, surname, dst.getBooshelfInstance());
+        Seller seller(name, surname, dst.getBooshelfInstance(), dst.accessToBudget());
         dst.addSeller(seller);
     }
     for (auto i : data["Customers"])

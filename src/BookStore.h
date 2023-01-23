@@ -17,16 +17,16 @@ class BookStore
         Bookshelf bookshelf;
         int maxNumberOfSellers;
         int counterOfSellers;
-        float budget;
         int idOfLastOrder;
-        std::vector<std::shared_ptr<Order>> doneOrders;
+        std::vector<std::shared_ptr<Order> > doneOrders;
         std::vector<std::shared_ptr<Customer> > customers;
         std::vector<std::shared_ptr<Seller> > sellers;
+        std::shared_ptr<float> budget;
 
 
     public:
-        BookStore(const Bookshelf& shelf): bookshelf(shelf), maxNumberOfSellers(3), counterOfSellers(0), budget(10000.0), idOfLastOrder(0){};
-        BookStore(const Bookshelf& shelf, int numberOfSellers_, float storeBudget): bookshelf(shelf), maxNumberOfSellers(numberOfSellers_), counterOfSellers(0), budget(storeBudget), idOfLastOrder(0){};
+        BookStore(const Bookshelf& shelf): bookshelf(shelf), maxNumberOfSellers(3), counterOfSellers(0), idOfLastOrder(0){budget = std::make_shared<float>(10000);};
+        BookStore(const Bookshelf& shelf, int numberOfSellers_, float storeBudget): bookshelf(shelf), maxNumberOfSellers(numberOfSellers_), counterOfSellers(0), idOfLastOrder(0){budget = std::make_shared<float>(storeBudget);};
         void addSeller(Seller &seller);
         void removeSeller(Seller &seller);
         void customerEntersStore(Customer &customer);
@@ -36,8 +36,12 @@ class BookStore
         int printCutomers();
         std::shared_ptr<Seller> getSellerByNum(int num);
         std::shared_ptr<Customer> getCustomerByNum(int num);
+
         float getBudget() const;
         void setBudget(float budget);
+        void addCash(float cash);
+        void getCash(float cash);
+        std::shared_ptr<float> accessToBudget();
         
         //złożenie zamówienia
         void makeAnOrder(const Book& book, int quantity, const Customer& whoOrdered);

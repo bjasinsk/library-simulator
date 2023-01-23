@@ -109,18 +109,18 @@ std::shared_ptr<Customer> BookStore::getCustomerByNum(int num)
 
 float BookStore::getBudget() const
 {
-    return budget;
+    return *budget;
 };
 
 void BookStore::setBudget(float budget)
 {
-    this->budget = budget;
+    *(this->budget) = budget;
 };
 
 void BookStore::makeAnOrder(const Book &book, int quantity, const Customer &whoOrdered)
 {
     double priceOfOrder = book.get_price() * quantity;
-    if (budget > priceOfOrder)
+    if (*budget > priceOfOrder)
     {
         time_t time_since_begin = time(0);
         tm *actual_time = localtime(&time_since_begin);
@@ -128,7 +128,7 @@ void BookStore::makeAnOrder(const Book &book, int quantity, const Customer &whoO
         idOfLastOrder++;
         std::shared_ptr<Order> newOrder = std::make_shared<Order>(idOfLastOrder, dateOfOrder, book, quantity, whoOrdered);
         doneOrders.push_back(newOrder);
-        budget -= priceOfOrder;
+        *budget -= priceOfOrder;
         std::cout << "Złożono podane zamówienie\n";
     }
     else
@@ -146,8 +146,8 @@ void BookStore::removeAnOrder(int idOfOrderToRemove)
             int quantityOfRemovedOrder = (*it)->getQuantity();
             float priceOfRemovedBook = (*it)->getOrderedBook().get_price();
             float removedOrderPrice = priceOfRemovedBook * quantityOfRemovedOrder;
-            float newBookStoreBudget = budget + removedOrderPrice;
-            budget = newBookStoreBudget;
+            float newBookStoreBudget = *budget + removedOrderPrice;
+            *budget = newBookStoreBudget;
             doneOrders.erase(it);
             break;
         }
@@ -171,10 +171,10 @@ void BookStore::modifyAnOrder(int idOfOrderToRemove, int newQuantity)
             float costToAdd = std::abs(differenceBeetwenQuantities) * priceOfBook;
             if (differenceBeetwenQuantities < 0)
             {
-                if (budget > costToAdd)
+                if (*budget > costToAdd)
                 {
-                    float newBudget = budget - costToAdd;
-                    budget = newBudget;
+                    float newBudget = *budget - costToAdd;
+                    *budget = newBudget;
                     (*it)->setQuantity(newQuantity);
                 }
                 else
@@ -184,8 +184,8 @@ void BookStore::modifyAnOrder(int idOfOrderToRemove, int newQuantity)
             }
             else
             {
-                float newBudget = budget + costToAdd;
-                budget = newBudget;
+                float newBudget = *budget + costToAdd;
+                *budget = newBudget;
                 (*it)->setQuantity(newQuantity);
             };
             break;
@@ -216,16 +216,24 @@ void BookStore::printCurrentOrders()
 
 void BookStore::showAvailableSellersWithQueues(){
     int counter1 = 1;
-    for (std::vector<std::shared_ptr<Seller>>::iterator it = sellers.begin(); it != sellers.end(); ++it){
-        std::cout << counter1 << ". Sprzedawca: " <<(*it)->getName() << " " << (*it)->getSurname() << "\n";
+    for (auto seller : sellers){
+        std::cout << counter1 << ". Sprzedawca: " << seller->getName() << " " << seller->getSurname() << "\n";
         std::cout << "Kolejka do powyższego sprzedawcy: \n";
-        auto queueOfCustomers = (*it)->getQueueOfCustomers();
-        int counter = 1;
-        while (!queueOfCustomers.empty()){
-            std::cout << "-----" << counter << ". " << queueOfCustomers.front()->getName() << " " << queueOfCustomers.front()->getSurname() << "\n";
-            counter++;
-            queueOfCustomers.pop();
-        }
-        counter1++;
+        seller->printQueueOfCustomers();
     }
 };
+
+void BookStore::addCash(float cash)
+{
+    *budget += cash;
+}
+
+void BookStore::getCash(float cash)
+{
+    *budget -= cash;
+}
+
+std::shared_ptr<float> BookStore::accessToBudget()
+{
+    return budget;
+}

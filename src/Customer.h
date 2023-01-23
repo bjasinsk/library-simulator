@@ -29,6 +29,7 @@ class Customer : public Human
         void printActualShoppingCart();
         void addToShoppingCart(const Book &book);
         void removeFromShoppingCart(Book &book);
+        void buyShoppingCart();
 
         //rachunek
         double getActualBill() const;

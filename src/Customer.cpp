@@ -31,10 +31,16 @@ void Customer::removeFromShoppingCart(Book &book){
             if(**it == book)
             {
                 shoppingCart.erase(it);
-                break;
+                return;
             }
         }
 };
+
+void Customer::buyShoppingCart()
+{
+    shoppingCart.clear();
+    bill = 0;
+}
 
 
 double Customer::getActualBill() const {
