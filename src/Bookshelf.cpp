@@ -23,6 +23,7 @@ void Bookshelf::addBooks(const Book &book, unsigned int number)
     else
     {
         std::shared_ptr<Book> new_book(new Book(book));
+        new_book->addBooks(number);
         books.push_back(new_book);
     }
 }

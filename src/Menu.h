@@ -20,7 +20,7 @@ class Menu
         void customersMenu();
         void sellerOptionsMenu(std::shared_ptr<Seller> seller); //zamawianie ksiazek, albo wykorzystanie pointera z parametru, albo przekazywac jako wartosc. Do rozwazenia
         void customerOptionsMenu(std::shared_ptr<Customer> customer);
-        const Book& getBook();
+        std::shared_ptr<const Book> getBook();
 
         
 

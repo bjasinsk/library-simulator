@@ -17,7 +17,7 @@ void Seller::serveFirstCustomerInQueue(){
     auto clientToServe = q.front();
     auto books = clientToServe->getShoppingCart();
     for (auto book : books)
-        book->removeBooks(1);
+        this->books.removeBooks(*book, 1);
     clientToServe->calculateBill();
     *budgetOfStore += clientToServe->getActualBill();
     clientToServe->buyShoppingCart();

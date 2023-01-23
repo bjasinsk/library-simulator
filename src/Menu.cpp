@@ -391,7 +391,7 @@ void Menu::customerOptionsMenu(std::shared_ptr<Customer> customer)
         case 3:
         {
             auto book = getBook();
-            customer->addToShoppingCart(book);
+            customer->addToShoppingCart(*book);
             break;
         }
         case 4:
@@ -428,7 +428,7 @@ void Menu::customerOptionsMenu(std::shared_ptr<Customer> customer)
     return;
 }
 
-const Book& Menu::getBook()
+std::shared_ptr<const Book> Menu::getBook()
 {
     using namespace std;
     int choice;
@@ -448,6 +448,6 @@ const Book& Menu::getBook()
             continue;
         }
         cout << *(books[choice]);
-        return *(books[choice]);  
+        return books[choice];  
     }
 }
