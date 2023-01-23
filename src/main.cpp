@@ -21,7 +21,7 @@ int main()
 {   
     Bookshelf bookshelf;
     BookStore sklep1(bookshelf);
-    JsonFile::getInstance().readData("C:\\Users\\danie\\Desktop\\PROI\\projekt\\src\\data.json", sklep1);
+    JsonFile::getInstance().readData("D:\\Studia\\data.json", sklep1);
     Menu menu(sklep1);
     menu.mainMenu();    
     return 0;
