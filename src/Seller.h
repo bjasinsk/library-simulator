@@ -57,8 +57,13 @@ class Seller : public Human
 
         //porównania
         bool operator==(const Seller &seller) const;
-
+        /**
+         * Metoda zwracająca kolejkę klientów ustawioną do danego sprzedawcy
+        */
         std::queue<std::shared_ptr<Customer>> getQueueOfCustomers() const;
+        /**
+         * Metoda wypisująca kolejkę klientów
+        */
         void printQueueOfCustomers();
 };
 

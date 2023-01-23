@@ -42,8 +42,19 @@ class Bookshelf
         void printBooksByCategory(Book::BookType category);
         
         friend std::ostream& operator<<(std::ostream& os, const Bookshelf& b);
+        /**
+         * Metoda zwracająca wszystkie książki znajdujące się na regale
+        */
         std::vector<std::shared_ptr<const Book>> getBooks();
+        /**
+         * Metoda zwracająca książki o danym autorze
+         * @param author autor
+        */
         std::vector<std::shared_ptr<const Book>> getBooksByAuthor(Author author);
+        /**
+         * Metoda zwracająca książki o danym tytule
+         * @param title tytuł
+        */
         std::vector<std::shared_ptr<const Book>> getBooksByTytle(std::string title);
 };
 
