@@ -12,7 +12,13 @@ class Author
         std::string surname;
     public:
         Author(std::string name, std::string surname);
+        /**
+         * Metoda zwracająca imię autora
+        */
         std::string get_name() const;
+        /**
+         * Metoda zwracająca nazwisko autora
+        */
         std::string get_surname() const;
         bool operator==(const Author& t) const;
         bool operator!=(const Author& t) const;

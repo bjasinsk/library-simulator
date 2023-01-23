@@ -66,11 +66,28 @@ class BookStore
          * Metoda, dzięki której możliwy jest wybór klienta po konkretnym numerze
         */
         std::shared_ptr<Customer> getCustomerByNum(int num);
-
+        /**
+         * Metoda zwracająca budżet księgarni
+        */
         float getBudget() const;
+        /**
+         * Metoda ustawiająca budżet księgarni
+         * @param budget budżet księgarni
+        */
         void setBudget(float budget);
+        /**
+         * Metoda dodająca określoną kwotę do budżetu księgarni
+         * @param cash określona kwota
+        */
         void addCash(float cash);
+        /**
+         * Metoda odejmująca określoną kwotę z budżetu księgarni
+         * @param cash określona kwota
+        */
         void getCash(float cash);
+        /**
+         * Metoda zwracająca budżet księgarni
+        */
         std::shared_ptr<float> accessToBudget();
         /**
          * Metoda składająca zamówienie
