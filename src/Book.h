@@ -78,7 +78,13 @@ public:
     */
     unsigned int removeBooks(unsigned int number);
     bool operator==(const Book &b) const;
+    /**
+     * Metoda zmieniająca kategorię książki z typu enum BookType na typ string
+    */
     static std::string BookType_to_string(BookType b);
+    /**
+     * Metoda zmieniająca kategorię książki z typu string na typ enum BookType
+    */
     static Book::BookType string_to_BookType(std::string category);
     static std::unordered_map<BookType, std::string> type_map;
 };

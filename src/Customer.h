@@ -43,7 +43,9 @@ class Customer : public Human
          * @param book książka, którą chcemy usunać
         */
         void removeFromShoppingCart(Book &book);
-
+        /**
+         * Metoda, dzięki której klient bierze nowy koszyk i ustawiająca rachunek na 0
+        */
         void buyShoppingCart();
 
         /**
