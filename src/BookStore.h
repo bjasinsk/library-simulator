@@ -10,7 +10,9 @@
 #include "Seller.h"
 #include "Customer.h" 
 
-
+/**
+ * Klasa BookStore reprezentująca księgarnie.
+*/
 class BookStore
 {
     private:

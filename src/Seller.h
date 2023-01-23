@@ -9,10 +9,13 @@
 #include "Book.h"
 #include "Orders.h"
 
+/**
+ * Klasa Seller reprezentująca sprzedawce w księgarni.
+*/
 class Seller : public Human
 {
     private:
-        //w księgarni pracuje pewna liczba sprzedawców, do każdego sprzedawcy ustawia się kolejka
+        ///w księgarni pracuje pewna liczba sprzedawców, do każdego sprzedawcy ustawia się kolejka
         std::queue<std::shared_ptr<Customer>> q;
         Bookshelf books;
         std::shared_ptr<float> budgetOfStore;

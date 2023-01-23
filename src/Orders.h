@@ -9,9 +9,11 @@
 #include "Book.h"
 #include "Customer.h"
 #include "Bookshelf.h"
-// #include "BookStore.h"
 #include "Date.h"
 
+/**
+ * Klasa Order reprezentująca zamówienie złożone przez klienta.
+*/
 class Order
 {
     private:

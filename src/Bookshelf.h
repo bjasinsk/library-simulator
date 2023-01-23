@@ -7,6 +7,9 @@
 #include <algorithm>
 #include "Book.h"
 
+/**
+ * Klasa Bookshelf reprezentująca regał z książkami.
+*/
 class Bookshelf
 {
     private:

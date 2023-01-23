@@ -3,6 +3,9 @@
 
 #include <iostream>
 
+/**
+ * Klasa Human reprezentująca człowieka.
+*/
 class Human
 {
     private:

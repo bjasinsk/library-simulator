@@ -13,6 +13,9 @@
 
 #include <ctime>
 
+/**
+ * Klasa Customer reprezentująca klienta w ksiegarni.
+*/
 class Customer : public Human
 {
     private:

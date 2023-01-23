@@ -5,6 +5,9 @@
 #include "Author.h"
 #include <unordered_map>
 
+/**
+ * Klasa Book reprezentująca książke.
+*/
 class Book
 {
 public:

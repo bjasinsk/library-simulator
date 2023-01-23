@@ -4,6 +4,9 @@
 #include "BookStore.h"
 #include <memory>
 
+/**
+ * Klasa Menu reprezentująca menu użytkownika, symulacji księgarni.
+*/
 class Menu
 {
     private:

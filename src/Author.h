@@ -2,7 +2,9 @@
 #define __AUTHOR_H__
 
 #include <iostream>
-
+/**
+ * Klasa Author reprezentująca autora książki.
+*/
 class Author
 {
     private:
