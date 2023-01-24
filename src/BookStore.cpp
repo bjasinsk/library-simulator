@@ -193,6 +193,17 @@ void BookStore::modifyAnOrder(int idOfOrderToRemove, int newQuantity)
     }
 };
 
+void BookStore::realizeOrders()
+{
+    for (auto order : doneOrders)
+    {
+        Book book = order->getOrderedBook();
+        int quantity = order->getQuantity();
+        bookshelf.addBooks(book, quantity);
+    }
+    doneOrders.clear();
+}
+
 void BookStore::printCurrentOrders()
 {
     int counter = 1;

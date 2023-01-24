@@ -42,7 +42,44 @@ void Menu::mainMenu()
             sellersMenu();
             break;
         case 4:
+            cashMenu();
+            break;
+        case 0:
+            return;
+        }
+    }
+    return;
+}
+
+void Menu::cashMenu()
+{
+    using namespace std;
+    int choice;
+    while (true)
+    {
+        cout << endl;
+        cout << "1. Wypisz wartosc w kasie" << endl;
+        cout << "2. Pokaz zamowienia" << endl;
+        cout << "3. Zrealizuj zamowienia" << endl;
+        cout << "0. Wyjscie" << endl;
+        cout << "Wybierz opcje: ";
+        cin >> choice;
+        if (cin.fail() || choice < 0 || choice > 4)
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
+        switch (choice)
+        {
+        case 1:
             cout << "W kasie jest: "<< this->bookstore->getBudget() << "zl" << endl;
+            break;
+        case 2:
+            this->bookstore->printCurrentOrders();
+            break;
+        case 3:
+            this->bookstore->realizeOrders();
             break;
         case 0:
             return;
@@ -285,7 +322,7 @@ void Menu::sellerOptionsMenu(std::shared_ptr<Seller> seller)
 
             cout << "Podaj cene: " << endl;
             string price = getStringFromUser();
-            int new_price = std::stof(price);
+            int new_price = std::stoi(price);
 
             cout << "Podaj date publikacji: " << endl;
             string publication_date = getStringFromUser();
@@ -300,19 +337,13 @@ void Menu::sellerOptionsMenu(std::shared_ptr<Seller> seller)
             cout << "Podaj ilość: " << endl;
             string new_quantity = getStringFromUser();
             int quantity = std::stoi(new_quantity);
-
-            cout << "Podaj imie zamawiającego: " << endl;
-            string new_name_customer = getStringFromUser();
-
-            cout << "Podaj nazwisko zamawiającego: " << endl;
-            string new_surname_customer = getStringFromUser();
             
             std::queue<std::shared_ptr<Customer>> customersFromQueue = seller->getQueueOfCustomers();
-            while(!customersFromQueue.empty()){
-                if (new_name_customer == customersFromQueue.front()->getName() && new_surname_customer == customersFromQueue.front()->getSurname()){
-                    bookstore->makeAnOrder(newBook, quantity, *customersFromQueue.front());
-                }
+            if(!customersFromQueue.empty()){
+                bookstore->makeAnOrder(newBook, quantity, *customersFromQueue.front());
             }
+            else
+                cout << "Brak klienta w kolejce, kto zamawai?" << endl;
             break;
         }
         case 7:

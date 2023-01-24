@@ -117,6 +117,8 @@ class BookStore
         */
         void showAvailableSellersWithQueues();
 
+        void realizeOrders();
+
 };
 
 

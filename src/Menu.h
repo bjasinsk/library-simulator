@@ -48,6 +48,7 @@ class Menu
         */
         void customerOptionsMenu(std::shared_ptr<Customer> customer);
         std::shared_ptr<const Book> getBook();
+        void cashMenu();
 
         
 
