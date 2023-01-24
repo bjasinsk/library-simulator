@@ -32,15 +32,14 @@ void BookStore::removeSeller(Seller &seller)
 void BookStore::customerEntersStore(Customer &customer)
 {
     std::shared_ptr<Customer> new_customer(new Customer(customer));
-    customers.push_back(new_customer);
 
     time_t time_since_begin = time(0);
     tm *actual_time = localtime(&time_since_begin);
-
-    customer.setTimeOfEntrance(Time(actual_time->tm_hour, actual_time->tm_min, actual_time->tm_sec));
+    new_customer->setTimeOfEntrance(Time(actual_time->tm_hour, actual_time->tm_min, actual_time->tm_sec));
+    customers.push_back(new_customer);
 
     std::cout << "Klient wszedł do skepu\n";
-    std::cout << "Czas wejścia: " << customer.getTimeOfEntrance().getHour() << ":" << customer.getTimeOfEntrance().getMinute() << ":" << customer.getTimeOfEntrance().getSeconds() << "\n";
+    std::cout << "Czas wejścia: " << new_customer->getTimeOfEntrance().getHour() << ":" << new_customer->getTimeOfEntrance().getMinute() << ":" << new_customer->getTimeOfEntrance().getSeconds() << "\n";
 };
 
 void BookStore::customerLeavesStore(Customer &customer)

@@ -309,42 +309,50 @@ void Menu::sellerOptionsMenu(std::shared_ptr<Seller> seller)
         }
         case 6:
         {   
-            cout << endl << "Podaj imie autora: " << endl;
-            string authorName = getStringFromUser();
+            try
+            {
+                cout << endl << "Podaj imie autora: " << endl;
+                string authorName = getStringFromUser();
 
-            cout << endl << "Podaj nazwisko autora: " << endl;
-            string authorSurname = getStringFromUser();
+                cout << endl << "Podaj nazwisko autora: " << endl;
+                string authorSurname = getStringFromUser();
 
-            Author new_author(authorName, authorSurname);
+                Author new_author(authorName, authorSurname);
 
-            cout << "Podaj nazwe tytułu: " << endl;
-            string new_title = getStringFromUser();
+                cout << "Podaj nazwe tytułu: " << endl;
+                string new_title = getStringFromUser();
 
-            cout << "Podaj cene: " << endl;
-            string price = getStringFromUser();
-            int new_price = std::stoi(price);
+                cout << "Podaj cene: " << endl;
+                string price = getStringFromUser();
+                int new_price = std::stoi(price);
 
-            cout << "Podaj date publikacji: " << endl;
-            string publication_date = getStringFromUser();
-            unsigned int publication = std::stoul(publication_date);
+                cout << "Podaj date publikacji: " << endl;
+                string publication_date = getStringFromUser();
+                unsigned int publication = std::stoul(publication_date);
 
-            cout << "Podaj kategorie książki, jedną z poniższych: Adventure\n Cookery\n Crime\n History\n Sci-fi\n Poetry\n" << endl;
-            string category = getStringFromUser();
-            Book::BookType t = Book::string_to_BookType(category);
+                cout << "Podaj kategorie książki, jedną z poniższych: Adventure\n Cookery\n Crime\n History\n Sci-fi\n Poetry\n" << endl;
+                string category = getStringFromUser();
 
-            Book newBook(new_author, new_title, new_price, publication, t);
+                Book::BookType t = Book::string_to_BookType(category);
+                Book newBook(new_author, new_title, new_price, publication, t);
 
-            cout << "Podaj ilość: " << endl;
-            string new_quantity = getStringFromUser();
-            int quantity = std::stoi(new_quantity);
-            
-            std::queue<std::shared_ptr<Customer>> customersFromQueue = seller->getQueueOfCustomers();
-            if(!customersFromQueue.empty()){
-                bookstore->makeAnOrder(newBook, quantity, *customersFromQueue.front());
+                cout << "Podaj ilość: " << endl;
+                string new_quantity = getStringFromUser();
+                int quantity = std::stoi(new_quantity);
+                
+                std::queue<std::shared_ptr<Customer>> customersFromQueue = seller->getQueueOfCustomers();
+                if(!customersFromQueue.empty()){
+                    bookstore->makeAnOrder(newBook, quantity, *customersFromQueue.front());
+                }
+                else
+                    cout << "Brak klienta w kolejce, kto zamawai?" << endl;
+                break;
             }
-            else
-                cout << "Brak klienta w kolejce, kto zamawai?" << endl;
-            break;
+            catch (...)
+            {
+                cerr << "Nieprawidlowa kategoria" << endl;
+                return;
+            }
         }
         case 7:
         {
