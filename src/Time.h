@@ -4,6 +4,9 @@
 #include <iostream>
 #include "ExceptionsLibrary.h"
 
+/**
+ * Klasa Time reprezentująca czas.
+*/
 class Time
 {
     private:

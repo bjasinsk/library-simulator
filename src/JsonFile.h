@@ -5,6 +5,9 @@
 #include <fstream>
 #include "BookStore.h"
 
+/**
+ * Klasa JsonFile odpowiadająca za import danych z pliku.
+*/
 class JsonFile
 {
 private:

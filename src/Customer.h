@@ -13,6 +13,9 @@
 
 #include <ctime>
 
+/**
+ * Klasa Customer reprezentująca klienta w ksiegarni.
+*/
 class Customer : public Human
 {
     private:
@@ -26,20 +29,49 @@ class Customer : public Human
 
         //koszyk
         std::vector<std::shared_ptr<Book>> getShoppingCart() const;
+        /**
+         * Metoda wypisujaca aktualny koszyk klienta
+        */
         void printActualShoppingCart();
+        /**
+         * Metoda dodająca książke do koszyka
+         * @param book książka, którą chcemy dodać do koszyka
+        */
         void addToShoppingCart(const Book &book);
+        /**
+         * Metoda usuwająca książke z koszyka
+         * @param book książka, którą chcemy usunać
+        */
         void removeFromShoppingCart(Book &book);
+        /**
+         * Metoda, odpowiadająca za wykonanie transakcji, opróżnienie koszyka i zapłacenie przez klienta
+        */
         void buyShoppingCart();
 
-        //rachunek
+        /**
+         * Metoda zwracająca aktualny rachunek klienta
+        */
         double getActualBill() const;
+        /**
+         * Metoda wyliczająca rachunek dla klienta
+        */
         void calculateBill();
 
-        //czas pobytu
+        /**
+         * Metoda zwracająca czas wejścia klienta do księgarni
+        */
         Time getTimeOfEntrance() const;
+        /*
+         * Metoda ustawiająca czas wejścia klienta do księgarni
+        */
         void setTimeOfEntrance(Time t);
-
+        /**
+         * Metoda zwracająca czas wyjścia klienta z księgarni
+        */
         Time getTimeOfLeave() const;
+        /**
+         * Metoda ustawiająca czas wyjścia klienta z księgarni
+        */
         void setTimeOfLeave(Time t);
         
         //porównania

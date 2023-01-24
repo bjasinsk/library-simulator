@@ -3,6 +3,9 @@
 
 #include <iostream>
 
+/**
+ * Klasa Date reprezentująca datę.
+*/
 class Date
 {
     private:

@@ -9,9 +9,11 @@
 #include "Book.h"
 #include "Customer.h"
 #include "Bookshelf.h"
-// #include "BookStore.h"
 #include "Date.h"
 
+/**
+ * Klasa Order reprezentująca zamówienie złożone przez klienta.
+*/
 class Order
 {
     private:
@@ -25,13 +27,29 @@ class Order
     public:
         Order(int orderId_, Date dateOfOrder_, Book book_, int quantity_, Customer whoOrdered_):
         orderId(orderId_), dateOfOrder(dateOfOrder_), book(book_), quantity(quantity_), whoOrdered(whoOrdered_) {}
-
+        /**
+         * Metoda zwracająca id zamówienia
+        */
         int getOrderId() const;
+        /**
+         * Metoda zwracająca date złożenia zamówienia
+        */
         Date getDateOfOrder() const;
+        /**
+         * Metoda zwracająca książke która została zamówiona
+        */
         Book getOrderedBook() const;
+        /**
+         * Metoda zwracająca ile sztuk danej książki zostało zamówione
+        */
         int getQuantity() const;
+        /**
+         * Metoda zwracająca klienta, który złożył dane zamówienie
+        */
         Customer getCustomer() const;
-
+        /**
+         * Metoda ustawiająca ilość danej książki w złożonym zamówieniu
+        */
         void setQuantity(int quantity_);
         
 };

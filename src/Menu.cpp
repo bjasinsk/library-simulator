@@ -2,6 +2,8 @@
 #include <limits>
 #include <algorithm>
 #include <cctype>
+#include <string>
+#include "Book.h"
 
 Menu::Menu(const BookStore &bookstore)
 {
@@ -213,7 +215,8 @@ void Menu::sellerOptionsMenu(std::shared_ptr<Seller> seller)
         cout << "3. Pokaz ksiazki autora" << endl;
         cout << "4. Pokaz kolejke" << endl;
         cout << "5. Obsluz klienta" << endl;
-        cout << "6. Zakoncz prace" << endl;
+        cout << "6. Zamów książke"<< endl;
+        cout << "7. Zakoncz prace" << endl;
         cout << "0. Wyjscie" << endl;
         cout << "Wybierz opcje: ";
         cin >> choice;
@@ -268,6 +271,51 @@ void Menu::sellerOptionsMenu(std::shared_ptr<Seller> seller)
             break;
         }
         case 6:
+        {   
+            cout << endl << "Podaj imie autora: " << endl;
+            string authorName = getStringFromUser();
+
+            cout << endl << "Podaj nazwisko autora: " << endl;
+            string authorSurname = getStringFromUser();
+
+            Author new_author(authorName, authorSurname);
+
+            cout << "Podaj nazwe tytułu: " << endl;
+            string new_title = getStringFromUser();
+
+            cout << "Podaj cene: " << endl;
+            string price = getStringFromUser();
+            int new_price = std::stof(price);
+
+            cout << "Podaj date publikacji: " << endl;
+            string publication_date = getStringFromUser();
+            unsigned int publication = std::stoul(publication_date);
+
+            cout << "Podaj kategorie książki, jedną z poniższych: Adventure\n Cookery\n Crime\n History\n Sci-fi\n Poetry\n" << endl;
+            string category = getStringFromUser();
+            Book::BookType t = Book::string_to_BookType(category);
+
+            Book newBook(new_author, new_title, new_price, publication, t);
+
+            cout << "Podaj ilość: " << endl;
+            string new_quantity = getStringFromUser();
+            int quantity = std::stoi(new_quantity);
+
+            cout << "Podaj imie zamawiającego: " << endl;
+            string new_name_customer = getStringFromUser();
+
+            cout << "Podaj nazwisko zamawiającego: " << endl;
+            string new_surname_customer = getStringFromUser();
+            
+            std::queue<std::shared_ptr<Customer>> customersFromQueue = seller->getQueueOfCustomers();
+            while(!customersFromQueue.empty()){
+                if (new_name_customer == customersFromQueue.front()->getName() && new_surname_customer == customersFromQueue.front()->getSurname()){
+                    bookstore->makeAnOrder(newBook, quantity, *customersFromQueue.front());
+                }
+            }
+            break;
+        }
+        case 7:
         {
             bookstore->removeSeller(*seller);
             return;
