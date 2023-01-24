@@ -22,6 +22,9 @@ class Human
          * Metoda zwracająca nazwisko
         */
         std::string getSurname() const;
+
+        bool operator==(const Human& t) const;
+        bool operator!=(const Human& t) const;
         friend std::ostream &operator<<(std::ostream &os, const Human &human);
 };
 std::ostream &operator<<(std::ostream &os, const Human &human);

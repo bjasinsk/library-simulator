@@ -42,7 +42,7 @@ void Seller::showBooksByAuthor (std::string name, std::string surname){
 
     std::cout << "Książki napisane przez autora: " << name << " " << surname << " to: \n";
     for(auto i: books.getBooks()){
-        if(i->get_author().get_name() == name && i->get_author().get_surname() == surname){
+        if(i->get_author().getName() == name && i->get_author().getSurname() == surname){
             std::cout << i->get_title() <<"\n";
         }
     }

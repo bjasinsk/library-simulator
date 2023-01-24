@@ -39,7 +39,7 @@ void BookStore::customerEntersStore(Customer &customer)
 
     customer.setTimeOfEntrance(Time(actual_time->tm_hour, actual_time->tm_min, actual_time->tm_sec));
 
-    std::cout << "Klient wszedł ze skepu\n";
+    std::cout << "Klient wszedł do skepu\n";
     std::cout << "Czas wejścia: " << customer.getTimeOfEntrance().getHour() << ":" << customer.getTimeOfEntrance().getMinute() << ":" << customer.getTimeOfEntrance().getSeconds() << "\n";
 };
 
