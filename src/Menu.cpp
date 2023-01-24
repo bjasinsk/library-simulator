@@ -220,7 +220,7 @@ void Menu::sellerOptionsMenu(std::shared_ptr<Seller> seller)
         cout << "0. Wyjscie" << endl;
         cout << "Wybierz opcje: ";
         cin >> choice;
-        if (cin.fail() || choice < 0 || choice > 6)
+        if (cin.fail() || choice < 0 || choice > 7)
         {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
