@@ -44,7 +44,7 @@ class Customer : public Human
         */
         void removeFromShoppingCart(Book &book);
         /**
-         * Metoda, dzięki której klient bierze nowy koszyk i ustawiająca rachunek na 0
+         * Metoda, odpowiadająca za wykonanie transakcji, opróżnienie koszyka i zapłacenie przez klienta
         */
         void buyShoppingCart();
 
