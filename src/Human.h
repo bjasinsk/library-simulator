@@ -4,7 +4,7 @@
 #include <iostream>
 
 /**
- * Klasa Human reprezentująca człowieka.
+ * Klasa Human reprezentująca człowieka. Klasa zawiera imię i nazwisko, metody zwracające dane człowieka, przeciążone operatory porównania.
 */
 class Human
 {

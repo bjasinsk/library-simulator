@@ -14,7 +14,7 @@
 #include <ctime>
 
 /**
- * Klasa Customer reprezentująca klienta w ksiegarni.
+ * Klasa Customer reprezentująca klienta w ksiegarni. Ma pola koszyk sklepowy, rachunek, czas wejścia do sklepu, czas wyjścia ze sklepu.
 */
 class Customer : public Human
 {

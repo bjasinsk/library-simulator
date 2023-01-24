@@ -8,7 +8,7 @@
 #include "Book.h"
 
 /**
- * Klasa Bookshelf reprezentująca regał z książkami.
+ * Klasa Bookshelf reprezentująca regał z książkami. Zawiera wektor wskaźników na książki.
 */
 class Bookshelf
 {

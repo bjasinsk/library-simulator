@@ -12,7 +12,7 @@
 #include "Date.h"
 
 /**
- * Klasa Order reprezentująca zamówienie złożone przez klienta.
+ * Klasa Order reprezentująca zamówienie złożone przez klienta. Ma pola id zamówienia, data publikacji, książka dodana do zamówienia, ilość w jakiej została zamówiona oraz pole reprezentujące kto złożył zamówienie.
 */
 class Order
 {

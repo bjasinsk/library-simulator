@@ -4,7 +4,7 @@
 #include <iostream>
 #include "Human.h"
 /**
- * Klasa Author reprezentująca autora książki.
+ * Klasa Author reprezentująca autora książki. Dziedziczy po klasie Human.
 */
 class Author: public Human
 {
