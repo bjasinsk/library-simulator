@@ -1,0 +1,25 @@
+var class_book_store =
+[
+    [ "BookStore", "class_book_store.html#a8405369b7d4ea9eaaa56a98c9302a6f5", null ],
+    [ "BookStore", "class_book_store.html#a6ce363323f54127ed453546e0d66324b", null ],
+    [ "accessToBudget", "class_book_store.html#a36b0131217287b400f48a16ecd45382c", null ],
+    [ "addCash", "class_book_store.html#a21569c4fb379aa0856a0069442c56a1e", null ],
+    [ "addSeller", "class_book_store.html#a788dc6b79f955a5fa7cb0b873d0d58e1", null ],
+    [ "customerEntersStore", "class_book_store.html#a1978b08a46d8c928458988cba21458a6", null ],
+    [ "customerLeavesStore", "class_book_store.html#a54340dd4ddfd013d740ee66f1eb9714e", null ],
+    [ "getBooshelfInstance", "class_book_store.html#abd91556514d62ad3f6604b957b914eb6", null ],
+    [ "getBudget", "class_book_store.html#ab3ae20bc183e85e935b7294cc2af27a3", null ],
+    [ "getCash", "class_book_store.html#a98e779d42316f29bd7b45419e9f896e2", null ],
+    [ "getCustomerByNum", "class_book_store.html#a04276f504da248121795968990bb7c23", null ],
+    [ "getSellerByNum", "class_book_store.html#afa5e544c8ea4b7c6fcbb681723a532ee", null ],
+    [ "makeAnOrder", "class_book_store.html#a29a8444feee107270312cf9fc6f4c12f", null ],
+    [ "modifyAnOrder", "class_book_store.html#ad2bf3d52d675b2145e6858fc3ad3dcaa", null ],
+    [ "printCurrentOrders", "class_book_store.html#ad26b16c3435537a63928ab386cce4f43", null ],
+    [ "printCutomers", "class_book_store.html#ac9ebdb3892628279c2e8fde6e32a54f0", null ],
+    [ "printSellers", "class_book_store.html#adbc310ccde7b15a50175b8e54b2b61c9", null ],
+    [ "realizeOrders", "class_book_store.html#a0e94c71db54d62049f429e3a1d6c3d23", null ],
+    [ "removeAnOrder", "class_book_store.html#a823d4d0f48fd54be31648100606d83a8", null ],
+    [ "removeSeller", "class_book_store.html#a7cae15058b62f7889929215d184f9d66", null ],
+    [ "setBudget", "class_book_store.html#a99aa5fe5ddfe2bfccf110001e93ee69b", null ],
+    [ "showAvailableSellersWithQueues", "class_book_store.html#a89f26084924fd9ddd27480d35306c7b4", null ]
+];

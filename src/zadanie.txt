@@ -1,0 +1,7 @@
+Dobry Wieczór: Przesyłam temat waszego zadania projektowegoProszę zasymulować działanie księgarni, przyjmując następujące założenia:
+
+W księgarni pracuje pewna liczba sprzedawców.
+Do księgarni wchodzą i z księgarni wychodzą klienci. Każdy klient znajduje się w księgarni przez pewną liczbę jednostek czasu.
+Klient może zapytać sprzedawcę o książkę, kupić lub zamówić książkę.
+Książki są dzielone na pewną stałą liczbę kategorii, od której zależy cena książki.
+Sprzedawca wystawia klientowi rachunek.

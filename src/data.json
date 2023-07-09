@@ -1,0 +1,148 @@
+{
+    "Authors": 
+    [
+        {
+            "name": "Bernard",
+            "surname": "Cornwell",
+            "Books": 
+            [
+                {
+                    "title": "The last kingdom",
+                    "price": 29.99,
+                    "year": 2014,
+                    "type": "History",
+                    "number": 10
+                },
+                {
+                    "title": "Song of sword",
+                    "price": 29.99,
+                    "year": 2015,
+                    "type": "History",
+                    "number": 10
+                }
+            ]
+        },
+        {
+            "name": "Carl",
+            "surname": "May",
+            "Books": 
+            [
+                {
+                    "title": "Skarb w srebrnym jeziorze",
+                    "price": 39,
+                    "year": 2014,
+                    "type": "Adventure",
+                    "number": 4
+                },
+                {
+                    "title": "Winnetou",
+                    "price": 20,
+                    "year": 2010,
+                    "type": "Adventure",
+                    "number": 10
+                }
+            ]
+        },
+        {
+            "name": "Magda",
+            "surname": "Gessler",
+            "Books": 
+            [
+                {
+                    "title": "Jak nie spalic obiadu",
+                    "price": 399,
+                    "year": 2008,
+                    "type": "Cookery",
+                    "number": 10
+                },
+                {
+                    "title": "Gotowanie wody",
+                    "price": 200,
+                    "year": 2010,
+                    "type": "Cookery",
+                    "number": 1
+                }
+            ]
+        },
+        {
+            "name": "Henryk",
+            "surname": "Sienkiewicz",
+            "Books": 
+            [
+                {
+                    "title": "W pusstyni i w puszczy",
+                    "price": 19,
+                    "year": 2008,
+                    "type": "Adventure",
+                    "number": 10
+                },
+                {
+                    "title": "Potop",
+                    "price": 24.99,
+                    "year": 2005,
+                    "type": "History",
+                    "number": 2
+                },
+                {
+                    "title": "Quo Vadis",
+                    "price": 35.99,
+                    "year": 2005,
+                    "type": "History",
+                    "number": 20
+                }
+            ]
+        },
+        {
+            "name": "Stieg",
+            "surname": "Larrson",
+            "Books": 
+            [
+                {
+                    "title": "Dziewczyna z tatuazem",
+                    "price": 39,
+                    "year": 2008,
+                    "type": "Crime",
+                    "number": 5
+                }
+            ]
+        }
+    ],
+    "Sellers":
+    [
+        {
+            "name": "Adam",
+            "surname": "Kowalski"
+        },
+        {
+            "name": "Anna",
+            "surname": "Komorowska"
+        },
+        {
+            "name": "Janusz",
+            "surname": "Radziwill"
+        }
+    ],
+    "Customers":
+    [
+        {
+            "name": "Grzegorz",
+            "surname": "Brzeczyszczykiewicz"
+        },
+        {
+            "name": "Anna",
+            "surname": "Andegawenska"
+        },
+        {
+            "name": "Michal",
+            "surname": "Aniol"
+        },
+        {
+            "name": "Kazimierz",
+            "surname": "Krzywousty"
+        },
+        {
+            "name": "Piotr",
+            "surname": "Bezimienny"
+        }
+    ]
+}
